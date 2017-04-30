@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Scrollbars } from 'react-custom-scrollbars';
+import CartScrollBar from './CartScrollBar';
 
 class Header extends Component{
     constructor(){
@@ -56,7 +56,7 @@ class Header extends Component{
                             <img src="https://res.cloudinary.com/sivadass/image/upload/v1493548928/icons/bag.png" alt="Cart"/>
                         </a>
                         <div className={this.state.cart ? "cart-preview active" : "cart-preview"}>
-                            <Scrollbars style={{ width: 360, height: 320 }}>
+                            <CartScrollBar>
                                 <ul className="cart-items">
                                     <li className="cart-item">
                                         <img className="product-image" src="https://res.cloudinary.com/sivadass/image/upload/v1493544034/dummy-products/broccoli.jpg" />
@@ -150,7 +150,7 @@ class Header extends Component{
                                         <a className="product-remove" href="#">&times;</a>
                                     </li>
                                 </ul>
-                            </Scrollbars>
+                            </CartScrollBar>
                             <div className="action-block">
                                 <button type="button">PROCEED TO CHECKOUT</button>
                             </div>

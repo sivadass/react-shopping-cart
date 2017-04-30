@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import Header from './components/Header';
 import Products from './components/Products';
+import Pagination from './components/Pagination';
 import Footer from './components/Footer';
 
 class App extends Component{
@@ -55,6 +56,7 @@ class App extends Component{
       <div className="container">
         <Header />
         <Products productsList={this.state.products} />
+        <Pagination />
         <Footer />
       </div>
     )

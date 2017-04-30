@@ -18,7 +18,9 @@ header{
 
 // Search Box
 .search{
-    margin-left: 64px; 
+    margin-left: 64px;
+    flex-grow: 1;
+    -webkit-flex-grow: 1;
 }
 .search-form{
     display: flex;
@@ -36,6 +38,7 @@ header{
     }
     .search-keyword{
         border-radius: 0 2px 2px 0;
+        width: 100%;
     }
 }
 
@@ -43,7 +46,7 @@ header{
 .cart{
     display: flex;
     display: -webkit-flex;
-    margin-left: auto;
+    margin-left: 64px;
     position: relative;
     z-index: 99;
 }

@@ -1,0 +1,24 @@
+.pagination{
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    margin: 32px;
+    .page{
+        display: block;
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+        text-align: center;
+        border: 1px solid $gray-eighty;
+        border-radius: 2px;
+        background: $white;
+        color: $gray-medium;
+        margin: 0 8px;
+        &.current-page{
+            border-color: transparent;
+            background: $primary-green;
+            color: $white;
+        }
+    }
+}
