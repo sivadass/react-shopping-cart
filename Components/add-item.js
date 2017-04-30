@@ -35,4 +35,4 @@ class AddItem extends Component{
   }
 }
 
-export default AddItem;
+//export default AddItem;
