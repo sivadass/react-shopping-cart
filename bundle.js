@@ -22150,7 +22150,7 @@
 	                _react2.default.createElement(
 	                    "div",
 	                    { className: "cart-icon" },
-	                    _react2.default.createElement("img", { src: "http://res.cloudinary.com/sivadass/image/upload/v1493548928/icons/bag.png", alt: "Cart" })
+	                    _react2.default.createElement("img", { src: "https://res.cloudinary.com/sivadass/image/upload/v1493548928/icons/bag.png", alt: "Cart" })
 	                ),
 	                _react2.default.createElement(
 	                    "div",

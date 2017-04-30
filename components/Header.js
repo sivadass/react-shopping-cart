@@ -37,7 +37,7 @@ const Header = (props) =>{
                         </table>
                     </div>
                     <div className="cart-icon">
-                        <img src="http://res.cloudinary.com/sivadass/image/upload/v1493548928/icons/bag.png" alt="Cart"/>
+                        <img src="https://res.cloudinary.com/sivadass/image/upload/v1493548928/icons/bag.png" alt="Cart"/>
                     </div>
                     <div className="cart-preview">
                         <ul>
@@ -49,7 +49,7 @@ const Header = (props) =>{
                                     <input type="number" defaultValue="1" className="quantity"/>
                                     <a href="#" className="increment">+</a>
                                 </div>
-                                
+
                             </li>
                         </ul>
                     </div>
