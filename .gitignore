@@ -1,2 +1,6 @@
+# Stylesheets
 .sass-cache/
 *.css.map
+
+# Node Modules
+node_modules/

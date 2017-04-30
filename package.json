@@ -1,22 +1,21 @@
 {
-  "name": "list",
+  "name": "react-shopping-cart",
   "version": "0.0.1",
-  "description": "list",
+  "description": "simple react shopping cart without using redux",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "boilerpalte",
-    "template"
+    "reactjs",
+    "shopping",
+    "cart"
   ],
   "author": "Sivadass",
   "license": "ISC",
   "dependencies": {
     "react": "^15.4.1",
-    "react-dom": "^15.4.1",
-    "react-redux": "^5.0.4",
-    "redux": "^3.6.0"
+    "react-dom": "^15.4.1"
   },
   "devDependencies": {
     "babel-core": "^6.10.4",
