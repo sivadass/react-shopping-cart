@@ -22087,7 +22087,7 @@
 	                            "Spices"
 	                        )
 	                    ),
-	                    _react2.default.createElement("input", { type: "search", name: "s", id: "s", placeholder: "Search", maxlength: "200", className: "search-keyword" })
+	                    _react2.default.createElement("input", { type: "search", name: "s", id: "s", placeholder: "Search", className: "search-keyword" })
 	                )
 	            ),
 	            _react2.default.createElement(
@@ -22100,48 +22100,52 @@
 	                        "table",
 	                        null,
 	                        _react2.default.createElement(
-	                            "tr",
+	                            "tbody",
 	                            null,
 	                            _react2.default.createElement(
-	                                "td",
-	                                null,
-	                                "No. of items"
-	                            ),
-	                            _react2.default.createElement(
-	                                "td",
-	                                null,
-	                                ":"
-	                            ),
-	                            _react2.default.createElement(
-	                                "td",
+	                                "tr",
 	                                null,
 	                                _react2.default.createElement(
-	                                    "strong",
+	                                    "td",
 	                                    null,
-	                                    "7"
+	                                    "No. of items"
+	                                ),
+	                                _react2.default.createElement(
+	                                    "td",
+	                                    null,
+	                                    ":"
+	                                ),
+	                                _react2.default.createElement(
+	                                    "td",
+	                                    null,
+	                                    _react2.default.createElement(
+	                                        "strong",
+	                                        null,
+	                                        "7"
+	                                    )
 	                                )
-	                            )
-	                        ),
-	                        _react2.default.createElement(
-	                            "tr",
-	                            null,
-	                            _react2.default.createElement(
-	                                "td",
-	                                null,
-	                                "Sub Total"
 	                            ),
 	                            _react2.default.createElement(
-	                                "td",
-	                                null,
-	                                ":"
-	                            ),
-	                            _react2.default.createElement(
-	                                "td",
+	                                "tr",
 	                                null,
 	                                _react2.default.createElement(
-	                                    "strong",
+	                                    "td",
 	                                    null,
-	                                    "288"
+	                                    "Sub Total"
+	                                ),
+	                                _react2.default.createElement(
+	                                    "td",
+	                                    null,
+	                                    ":"
+	                                ),
+	                                _react2.default.createElement(
+	                                    "td",
+	                                    null,
+	                                    _react2.default.createElement(
+	                                        "strong",
+	                                        null,
+	                                        "288"
+	                                    )
 	                                )
 	                            )
 	                        )
