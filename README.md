@@ -1,3 +1,3 @@
-# react-shopping-cart
-React Shopping Cart without using Redux
+# React Shopping Cart
+Simple React Shopping Cart without using Redux
 
