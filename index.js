@@ -1,18 +1,18 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import List from './Components/list';
-import AddItem from './Components/add-item';
+import Header from './components/Header';
+import Products from './components/Products';
 
 class App extends Component{
   constructor(){
     super();
     this.state = {
-      list: []
+      products: []
     };
   }
-  getList(){
+  getProducts(){
     this.setState({
-      list: [
+      products: [
         {
           id: 1,
           title: "Wake up at 4 AM"
@@ -29,23 +29,12 @@ class App extends Component{
     })
   }
   componentWillMount(){
-    this.getList();
+    this.getProducts();
   }
-
-  handleAddNewItem(newItem){
-    //console.log(newItem);
-    let list = this.state.list;
-    list.push(newItem);
-    this.setState({
-      list: list
-    });
-  }
-
   render(){
     return(
       <div className="container">
-        <AddItem addNewItem={this.handleAddNewItem.bind(this)}/>
-        <List listData={this.state.list}/>
+        <h1>React Shopping Cart</h1>
       </div>
     )
   }
