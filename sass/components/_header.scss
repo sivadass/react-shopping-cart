@@ -1,7 +1,7 @@
 header{
     background: $white;
     padding: 30px 32px;
-    box-shadow: 0px 0 10px rgba(0,0,0,0.05), 0px 8px 18px rgba(0,0,0,0.1);
+    box-shadow: 0px 8px 18px rgba(0,0,0,0.033);
     .container{
         display: flex;
         display: -webkit-flex;
@@ -45,6 +45,7 @@ header{
     display: -webkit-flex;
     margin-left: auto;
     position: relative;
+    z-index: 99;
 }
 .cart-info table{
     font-size: 14px;
@@ -61,23 +62,112 @@ header{
 }
 .cart-icon{
     margin-left: 16px;
-    z-index: 100;
+    z-index: 99;
 }
 .cart-preview{
     display: none;
     background: $white;
     border: 1px solid $gray-eighty;
-    img{
-        width: 48px;
+    &:before{
+        content: "";
+        position: absolute;
+        display: block;
+        top: -9px;
+        right: 8px;
+        width: 0; 
+        height: 0; 
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 8px solid $gray-eighty;
+        z-index: 1
+    }
+    &:after{
+        content: "";
+        position: absolute;
+        display: block;
+        top: -7px;
+        right: 9px;
+        width: 0; 
+        height: 0; 
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid $white;
+        z-index: 1
     }
 }
-.cart-icon:hover + .cart-preview{
-    z-index: 100;
+.cart-preview.active{
+    z-index: 99;
     display: block;
     position: absolute;
-    top: 30px;
+    top: 48px;
     right: 0;
     width: 360px;
-    height: 400px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    height: 388px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.action-block{
+    background: $white;
+    position: absolute;
+    bottom:0;
+    padding: 16px;
+    width: 100%;
+    button{
+        background: $primary-orange;
+        display: block;
+        width: 100%;
+    }
+}
+.cart-items{
+    height: 320px;
+    width: 360px;
+}
+.cart-item{
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    padding: 8px;
+    .product-image{
+        width: 48px;
+        height: 48px;
+    }
+    .product-info{
+        margin-left: 16px;
+        flex-grow: 1;
+        .product-name{
+            color: $gray-light;
+            font-size: 14px;
+        }
+        .product-price{
+            color: $gray-dark;
+            font-weight: 700;
+            &:before{
+                content: "Rs. "
+            }
+        }
+    }
+    .stepper-input{
+        margin-left: 16px;
+        margin-right: 0;
+        .quantity{
+            margin-left: 8px;
+            margin-right: 8px;
+            width: 36px;
+        }
+    }
+    .product-remove{
+        margin-left: 24px;
+        height: 24px;
+        line-height: 24px;
+        width: 24px;
+        font-size: 22px;
+        color: $gray-eighty;
+        &:hover{
+            color: $red;
+        }
+    }
+    &:hover{
+        background: $green-light-bg;
+    }
 }

@@ -36,6 +36,9 @@ input[type=number]::-webkit-outer-spin-button {
 strong{
     font-weight: 700;
 }
+a{
+    text-decoration: none;
+}
 h1,
 h2,
 h3,
@@ -45,7 +48,9 @@ h6,
 p{
     margin: 0;
 }
-
+ul{
+    list-style: none;
+}
 button{
     height: 36px;
     border-radius: 2px;
