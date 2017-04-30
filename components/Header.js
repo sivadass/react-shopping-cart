@@ -58,7 +58,7 @@ class Header extends Component{
                         <div className={this.state.cart ? "cart-preview active" : "cart-preview"}>
                             <Scrollbars style={{ width: 360, height: 320 }}>
                                 <ul className="cart-items">
-                                    {/*<li className="cart-item">
+                                    <li className="cart-item">
                                         <img className="product-image" src="https://res.cloudinary.com/sivadass/image/upload/v1493544034/dummy-products/broccoli.jpg" />
                                         <div className="product-info">
                                             <p className="product-name">Broccoli</p>
@@ -83,7 +83,7 @@ class Header extends Component{
                                             <a href="#" className="increment">+</a>
                                         </div>
                                         <a className="product-remove" href="#">&times;</a>
-                                    </li>*/}
+                                    </li>
                                     <li className="cart-item">
                                         <img className="product-image" src="https://res.cloudinary.com/sivadass/image/upload/v1493544034/dummy-products/broccoli.jpg" />
                                         <div className="product-info">
