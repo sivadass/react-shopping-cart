@@ -56,13 +56,9 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _Header = __webpack_require__(182);
+	var _Footer = __webpack_require__(182);
 
-	var _Header2 = _interopRequireDefault(_Header);
-
-	var _Products = __webpack_require__(183);
-
-	var _Products2 = _interopRequireDefault(_Products);
+	var _Footer2 = _interopRequireDefault(_Footer);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -113,11 +109,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'container' },
-	        _react2.default.createElement(
-	          'h1',
-	          null,
-	          'React Shopping Cart'
-	        )
+	        _react2.default.createElement(_Footer2.default, null)
 	      );
 	    }
 	  }]);
@@ -21859,15 +21851,33 @@
 
 /***/ }),
 /* 182 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
-/***/ }),
-/* 183 */
-/***/ (function(module, exports) {
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 
-	"use strict";
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Footer = function Footer(props) {
+	  return _react2.default.createElement(
+	    'footer',
+	    null,
+	    _react2.default.createElement(
+	      'p',
+	      null,
+	      '\xA9 Veggy Shop'
+	    )
+	  );
+	};
+
+	exports.default = Footer;
 
 /***/ })
 /******/ ]);

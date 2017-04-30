@@ -1,16 +1,2 @@
-body{
-  margin: 0;
-  padding: 0;
-  font-family: "Arial", sans-serif;
-  font-size: 16px;
-  background: #f5f5f5;
-}
-#root{
-  background: #fff;
-  max-width: 360px;
-  margin: 0 auto;
-  max-height: 640px;
-  height: 100%;
-  width: 100%;
-  overflow: auto;
-}
+@import 'base/index';
+@import 'components/index';
