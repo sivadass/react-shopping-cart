@@ -1,0 +1,20 @@
+.products{
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+    padding: 16px;
+    max-width: 960px;
+    margin: 0 auto;
+    .product{
+        flex-basis: calc(25% - 32px);
+        @media (max-width: 768px){
+            flex-basis: calc(33% - 32px);
+        }
+        @media (max-width: 480px){
+            flex-basis: calc(50% - 32px);
+        }
+        @media (max-width: 320px){
+            flex-basis: 100%;
+        }
+    }
+}

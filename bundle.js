@@ -56,6 +56,14 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
+	var _Header = __webpack_require__(185);
+
+	var _Header2 = _interopRequireDefault(_Header);
+
+	var _Products = __webpack_require__(183);
+
+	var _Products2 = _interopRequireDefault(_Products);
+
 	var _Footer = __webpack_require__(182);
 
 	var _Footer2 = _interopRequireDefault(_Footer);
@@ -88,13 +96,29 @@
 	      this.setState({
 	        products: [{
 	          id: 1,
-	          title: "Wake up at 4 AM"
+	          name: "Brocolli - 1 Kg",
+	          price: 120,
+	          image: "https://res.cloudinary.com/sivadass/image/upload/v1493544034/dummy-products/broccoli.jpg"
 	        }, {
 	          id: 2,
-	          title: "30 minutes reading"
+	          name: "Cauliflower - 1 Kg",
+	          price: 60,
+	          image: "https://res.cloudinary.com/sivadass/image/upload/v1493544035/dummy-products/cauliflower.jpg"
 	        }, {
 	          id: 3,
-	          title: "Pump water"
+	          name: "Cucumber - 1 Kg",
+	          price: 48,
+	          image: "https://res.cloudinary.com/sivadass/image/upload/v1493544035/dummy-products/cucumber.jpg"
+	        }, {
+	          id: 4,
+	          name: "Beetroot - 1 Kg",
+	          price: 32,
+	          image: "https://res.cloudinary.com/sivadass/image/upload/v1493544035/dummy-products/beetroot.jpg"
+	        }, {
+	          id: 5,
+	          name: "Carrot - 1 Kg",
+	          price: 56,
+	          image: "https://res.cloudinary.com/sivadass/image/upload/v1493544034/dummy-products/carrots.jpg"
 	        }]
 	      });
 	    }
@@ -109,6 +133,8 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'container' },
+	        _react2.default.createElement(_Header2.default, null),
+	        _react2.default.createElement(_Products2.default, { productsList: this.state.products }),
 	        _react2.default.createElement(_Footer2.default, null)
 	      );
 	    }
@@ -21856,7 +21882,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 
 	var _react = __webpack_require__(1);
@@ -21866,18 +21892,305 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Footer = function Footer(props) {
-	  return _react2.default.createElement(
-	    'footer',
-	    null,
-	    _react2.default.createElement(
-	      'p',
-	      null,
-	      '\xA9 Veggy Shop'
-	    )
-	  );
+	    return _react2.default.createElement(
+	        'footer',
+	        null,
+	        '\xA9 2017 ',
+	        _react2.default.createElement(
+	            'strong',
+	            null,
+	            'Veggy'
+	        ),
+	        ' - Organic Food Store'
+	    );
 	};
 
 	exports.default = Footer;
+
+/***/ }),
+/* 183 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Product = __webpack_require__(184);
+
+	var _Product2 = _interopRequireDefault(_Product);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Products = function (_Component) {
+	  _inherits(Products, _Component);
+
+	  function Products() {
+	    _classCallCheck(this, Products);
+
+	    return _possibleConstructorReturn(this, (Products.__proto__ || Object.getPrototypeOf(Products)).call(this));
+	  }
+
+	  _createClass(Products, [{
+	    key: 'render',
+	    value: function render() {
+	      var productsData = void 0;
+	      productsData = this.props.productsList.map(function (product) {
+	        return _react2.default.createElement(_Product2.default, { key: product.id, price: product.price, name: product.name, image: product.image });
+	      });
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'products' },
+	        productsData
+	      );
+	    }
+	  }]);
+
+	  return Products;
+	}(_react.Component);
+
+	exports.default = Products;
+
+/***/ }),
+/* 184 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Product = function Product(props) {
+	    return _react2.default.createElement(
+	        "div",
+	        { className: "product" },
+	        _react2.default.createElement("img", { className: "product-image", src: props.image, alt: props.name }),
+	        _react2.default.createElement(
+	            "h4",
+	            { className: "product-name" },
+	            props.name
+	        ),
+	        _react2.default.createElement(
+	            "p",
+	            { className: "product-price" },
+	            props.price
+	        ),
+	        _react2.default.createElement(
+	            "div",
+	            { className: "stepper-input" },
+	            _react2.default.createElement(
+	                "a",
+	                { href: "#", className: "decrement" },
+	                "-"
+	            ),
+	            _react2.default.createElement("input", { type: "number", defaultValue: "1", className: "quantity" }),
+	            _react2.default.createElement(
+	                "a",
+	                { href: "#", className: "increment" },
+	                "+"
+	            )
+	        ),
+	        _react2.default.createElement(
+	            "div",
+	            { className: "product-action" },
+	            _react2.default.createElement(
+	                "button",
+	                null,
+	                "ADD TO CART"
+	            )
+	        )
+	    );
+	};
+
+	exports.default = Product;
+
+/***/ }),
+/* 185 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Header = function Header(props) {
+	    return _react2.default.createElement(
+	        "header",
+	        null,
+	        _react2.default.createElement(
+	            "div",
+	            { className: "container" },
+	            _react2.default.createElement(
+	                "div",
+	                { className: "brand" },
+	                _react2.default.createElement("img", { className: "logo", src: "https://res.cloudinary.com/sivadass/image/upload/v1493547373/dummy-logo/Veggy.png", alt: "Veggy Brand Logo" })
+	            ),
+	            _react2.default.createElement(
+	                "div",
+	                { className: "search" },
+	                _react2.default.createElement(
+	                    "form",
+	                    { action: "#", method: "get", className: "search-form" },
+	                    _react2.default.createElement(
+	                        "select",
+	                        { name: "", id: "", className: "search-category" },
+	                        _react2.default.createElement(
+	                            "option",
+	                            null,
+	                            "All"
+	                        ),
+	                        _react2.default.createElement(
+	                            "option",
+	                            null,
+	                            "Vegetables"
+	                        ),
+	                        _react2.default.createElement(
+	                            "option",
+	                            null,
+	                            "Fruits"
+	                        ),
+	                        _react2.default.createElement(
+	                            "option",
+	                            null,
+	                            "Nuts"
+	                        ),
+	                        _react2.default.createElement(
+	                            "option",
+	                            null,
+	                            "Spices"
+	                        )
+	                    ),
+	                    _react2.default.createElement("input", { type: "search", name: "s", id: "s", placeholder: "Search", maxlength: "200", className: "search-keyword" })
+	                )
+	            ),
+	            _react2.default.createElement(
+	                "div",
+	                { className: "cart" },
+	                _react2.default.createElement(
+	                    "div",
+	                    { className: "cart-info" },
+	                    _react2.default.createElement(
+	                        "table",
+	                        null,
+	                        _react2.default.createElement(
+	                            "tr",
+	                            null,
+	                            _react2.default.createElement(
+	                                "td",
+	                                null,
+	                                "No. of items"
+	                            ),
+	                            _react2.default.createElement(
+	                                "td",
+	                                null,
+	                                ":"
+	                            ),
+	                            _react2.default.createElement(
+	                                "td",
+	                                null,
+	                                _react2.default.createElement(
+	                                    "strong",
+	                                    null,
+	                                    "7"
+	                                )
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            "tr",
+	                            null,
+	                            _react2.default.createElement(
+	                                "td",
+	                                null,
+	                                "Sub Total"
+	                            ),
+	                            _react2.default.createElement(
+	                                "td",
+	                                null,
+	                                ":"
+	                            ),
+	                            _react2.default.createElement(
+	                                "td",
+	                                null,
+	                                _react2.default.createElement(
+	                                    "strong",
+	                                    null,
+	                                    "288"
+	                                )
+	                            )
+	                        )
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    "div",
+	                    { className: "cart-icon" },
+	                    _react2.default.createElement("img", { src: "http://res.cloudinary.com/sivadass/image/upload/v1493548928/icons/bag.png", alt: "Cart" })
+	                ),
+	                _react2.default.createElement(
+	                    "div",
+	                    { className: "cart-preview" },
+	                    _react2.default.createElement(
+	                        "ul",
+	                        null,
+	                        _react2.default.createElement(
+	                            "li",
+	                            null,
+	                            _react2.default.createElement("img", { src: "https://res.cloudinary.com/sivadass/image/upload/v1493544034/dummy-products/broccoli.jpg" }),
+	                            _react2.default.createElement(
+	                                "p",
+	                                null,
+	                                "Broccoli"
+	                            ),
+	                            _react2.default.createElement(
+	                                "div",
+	                                { className: "stepper-input" },
+	                                _react2.default.createElement(
+	                                    "a",
+	                                    { href: "#", className: "decrement" },
+	                                    "-"
+	                                ),
+	                                _react2.default.createElement("input", { type: "number", defaultValue: "1", className: "quantity" }),
+	                                _react2.default.createElement(
+	                                    "a",
+	                                    { href: "#", className: "increment" },
+	                                    "+"
+	                                )
+	                            )
+	                        )
+	                    )
+	                )
+	            )
+	        )
+	    );
+	};
+
+	exports.default = Header;
 
 /***/ })
 /******/ ]);

@@ -1,0 +1,83 @@
+header{
+    background: $white;
+    padding: 30px 32px;
+    box-shadow: 0px 0 10px rgba(0,0,0,0.05), 0px 8px 18px rgba(0,0,0,0.1);
+    .container{
+        display: flex;
+        display: -webkit-flex;
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 32px;
+    }
+}
+
+// Logo
+.brand .logo{
+    width: 123px;
+}
+
+// Search Box
+.search{
+    margin-left: 64px; 
+}
+.search-form{
+    display: flex;
+    display: -webkit-flex;
+    .search-category,
+    .search-keyword{
+        height: 36px;
+        border: 1px solid $primary-green;
+        padding: 0 16px;
+    }
+     .search-category{
+        border-radius: 2px 0 0 2px;
+        background: $primary-green;
+        color: $white;
+    }
+    .search-keyword{
+        border-radius: 0 2px 2px 0;
+    }
+}
+
+// Cart
+.cart{
+    display: flex;
+    display: -webkit-flex;
+    margin-left: auto;
+    position: relative;
+}
+.cart-info table{
+    font-size: 14px;
+    color: $primary-green;
+    text-align: right;
+    tr{
+        padding: 0;
+        margin: 0;
+    }
+    td{
+        padding: 0 4px;
+        line-height: 16px;
+    }
+}
+.cart-icon{
+    margin-left: 16px;
+    z-index: 100;
+}
+.cart-preview{
+    display: none;
+    background: $white;
+    border: 1px solid $gray-eighty;
+    img{
+        width: 48px;
+    }
+}
+.cart-icon:hover + .cart-preview{
+    z-index: 100;
+    display: block;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    width: 360px;
+    height: 400px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}

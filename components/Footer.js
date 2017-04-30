@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
 
-const Footer = (props) => <footer><p>&copy; Veggy Shop</p></footer>;
+const Footer = (props) =>{
+    return(
+        <footer>&copy; 2017 <strong>Veggy</strong> - Organic Food Store</footer>
+    )
+};
 
 export default Footer;

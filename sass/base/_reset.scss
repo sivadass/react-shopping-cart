@@ -9,6 +9,7 @@ body{
     font-family: Roboto;
     font-size: 16px;
     color: $gray-dark;
+    background: $gray-light-bg;
 }
 *{
     box-sizing: border-box;
@@ -32,7 +33,47 @@ input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none; 
     margin: 0; 
 }
-
 strong{
     font-weight: 700;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p{
+    margin: 0;
+}
+
+button{
+    height: 36px;
+    border-radius: 2px;
+    text-align: center;
+    color: $white;
+    background: $primary-green;
+    border: 0;
+    font-weight: 400;
+    padding: 0 16px;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    &:hover{
+        background: lighten($primary-green, 10%);
+    }
+    &:focus{
+        outline: none;
+    }
+    &:active{
+        background: lighten($primary-green, 15%);
+    }
+}
+
+input{
+    font-size: inherit;
+    font-family: inherit;
+}
+
+form{
+    margin: 0;
 }
