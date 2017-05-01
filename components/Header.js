@@ -1,20 +1,40 @@
 import React, {Component} from 'react';
 import CartScrollBar from './CartScrollBar';
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
 class Header extends Component{
     constructor(props){
         super(props);
         this.state = {
-            showCart: false
+            showCart: false,
+            cart: this.props.cartItems
         };
     }
     handleCart(e){
         e.preventDefault();
         this.setState({
-            cart: !this.state.cart
+            showCart: !this.state.showCart
         })
     }
     render(){
+        let cartItems;
+        cartItems = this.state.cart.map(product =>{
+			return(
+				<li className="cart-item" key={product.name}>
+                    <img className="product-image" src={product.image} />
+                    <div className="product-info">
+                        <p className="product-name">{product.name}</p>
+                        <p className="product-price">{product.price}</p>
+                    </div>
+                    <div className="stepper-input">
+                        <a href="#" className="decrement">-</a>
+                        <input type="number" defaultValue={product.quantity} className="quantity"/>
+                        <a href="#" className="increment">+</a>
+                    </div>
+                    <a className="product-remove" href="#">&times;</a>
+                </li>
+			)
+		});
         return(
             <header>
                 <div className="container">
@@ -24,11 +44,11 @@ class Header extends Component{
                         
                     <div className="search">
                         <form action="#" method="get" className="search-form">
-                            <select name="" id="" className="search-category" onChange={this.props.handleCategory}>
-                                <option>All</option>
-                                <option>Vegetables</option>
-                                <option>Fruits</option>
-                                <option>Nuts</option>
+                            <select className="search-category" onChange={this.props.handleCategory.bind(this)}  defaultValue={this.props.categoryTerm}>
+                                <option value="all">All</option>
+                                <option value="vegetables">Vegetables</option>
+                                <option value="fruits">Fruits</option>
+                                <option value="nuts">Nuts</option>
                             </select>
                             <input type="search" name="s" id="s" placeholder="Search" className="search-keyword" onChange={this.props.handleSearch}/>
                         </form>
@@ -56,7 +76,7 @@ class Header extends Component{
                         </a>
                         <div className={this.state.showCart ? "cart-preview active" : "cart-preview"}>
                             <CartScrollBar>
-                                <ul className="cart-items">
+                                {/*<ul className="cart-items">
                                     <li className="cart-item">
                                         <img className="product-image" src="https://res.cloudinary.com/sivadass/image/upload/v1493544034/dummy-products/broccoli.jpg" />
                                         <div className="product-info">
@@ -70,85 +90,15 @@ class Header extends Component{
                                         </div>
                                         <a className="product-remove" href="#">&times;</a>
                                     </li>
-                                    <li className="cart-item">
-                                        <img className="product-image" src="https://res.cloudinary.com/sivadass/image/upload/v1493544034/dummy-products/broccoli.jpg" />
-                                        <div className="product-info">
-                                            <p className="product-name">Broccoli</p>
-                                            <p className="product-price">120</p>
-                                        </div>
-                                        <div className="stepper-input">
-                                            <a href="#" className="decrement">-</a>
-                                            <input type="number" defaultValue="1" className="quantity"/>
-                                            <a href="#" className="increment">+</a>
-                                        </div>
-                                        <a className="product-remove" href="#">&times;</a>
-                                    </li>
-                                    <li className="cart-item">
-                                        <img className="product-image" src="https://res.cloudinary.com/sivadass/image/upload/v1493544034/dummy-products/broccoli.jpg" />
-                                        <div className="product-info">
-                                            <p className="product-name">Broccoli</p>
-                                            <p className="product-price">120</p>
-                                        </div>
-                                        <div className="stepper-input">
-                                            <a href="#" className="decrement">-</a>
-                                            <input type="number" defaultValue="1" className="quantity"/>
-                                            <a href="#" className="increment">+</a>
-                                        </div>
-                                        <a className="product-remove" href="#">&times;</a>
-                                    </li>
-                                    <li className="cart-item">
-                                        <img className="product-image" src="https://res.cloudinary.com/sivadass/image/upload/v1493544034/dummy-products/broccoli.jpg" />
-                                        <div className="product-info">
-                                            <p className="product-name">Broccoli</p>
-                                            <p className="product-price">120</p>
-                                        </div>
-                                        <div className="stepper-input">
-                                            <a href="#" className="decrement">-</a>
-                                            <input type="number" defaultValue="1" className="quantity"/>
-                                            <a href="#" className="increment">+</a>
-                                        </div>
-                                        <a className="product-remove" href="#">&times;</a>
-                                    </li>
-                                    <li className="cart-item">
-                                        <img className="product-image" src="https://res.cloudinary.com/sivadass/image/upload/v1493544034/dummy-products/broccoli.jpg" />
-                                        <div className="product-info">
-                                            <p className="product-name">Broccoli</p>
-                                            <p className="product-price">120</p>
-                                        </div>
-                                        <div className="stepper-input">
-                                            <a href="#" className="decrement">-</a>
-                                            <input type="number" defaultValue="1" className="quantity"/>
-                                            <a href="#" className="increment">+</a>
-                                        </div>
-                                        <a className="product-remove" href="#">&times;</a>
-                                    </li>
-                                    <li className="cart-item">
-                                        <img className="product-image" src="https://res.cloudinary.com/sivadass/image/upload/v1493544034/dummy-products/broccoli.jpg" />
-                                        <div className="product-info">
-                                            <p className="product-name">Broccoli</p>
-                                            <p className="product-price">120</p>
-                                        </div>
-                                        <div className="stepper-input">
-                                            <a href="#" className="decrement">-</a>
-                                            <input type="number" defaultValue="1" className="quantity"/>
-                                            <a href="#" className="increment">+</a>
-                                        </div>
-                                        <a className="product-remove" href="#">&times;</a>
-                                    </li>
-                                    <li className="cart-item">
-                                        <img className="product-image" src="https://res.cloudinary.com/sivadass/image/upload/v1493544034/dummy-products/broccoli.jpg" />
-                                        <div className="product-info">
-                                            <p className="product-name">Broccoli</p>
-                                            <p className="product-price">120</p>
-                                        </div>
-                                        <div className="stepper-input">
-                                            <a href="#" className="decrement">-</a>
-                                            <input type="number" defaultValue="1" className="quantity"/>
-                                            <a href="#" className="increment">+</a>
-                                        </div>
-                                        <a className="product-remove" href="#">&times;</a>
-                                    </li>
-                                </ul>
+                                </ul>*/}
+                                <CSSTransitionGroup
+                                    transitionName="fadeIn"
+                                    transitionEnterTimeout={500}
+                                    transitionLeaveTimeout={300} 
+                                    component="ul"
+                                    className="cart-items">
+                                        {cartItems}
+				                </CSSTransitionGroup>
                             </CartScrollBar>
                             <div className="action-block">
                                 <button type="button">PROCEED TO CHECKOUT</button>
