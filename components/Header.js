@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import CartScrollBar from './CartScrollBar';
 
 class Header extends Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
-            cart: false
+            showCart: false
         };
     }
     handleCart(e){
@@ -24,13 +24,13 @@ class Header extends Component{
                         
                     <div className="search">
                         <form action="#" method="get" className="search-form">
-                            <select name="" id="" className="search-category">
+                            <select name="" id="" className="search-category" onChange={this.props.handleCategory}>
                                 <option>All</option>
                                 <option>Vegetables</option>
                                 <option>Fruits</option>
                                 <option>Nuts</option>
                             </select>
-                            <input type="search" name="s" id="s" placeholder="Search" className="search-keyword"/>
+                            <input type="search" name="s" id="s" placeholder="Search" className="search-keyword" onChange={this.props.handleSearch}/>
                         </form>
                     </div>
 
@@ -54,7 +54,7 @@ class Header extends Component{
                         <a className="cart-icon" href="#" onClick={this.handleCart.bind(this)}>
                             <img src="https://res.cloudinary.com/sivadass/image/upload/v1493548928/icons/bag.png" alt="Cart"/>
                         </a>
-                        <div className={this.state.cart ? "cart-preview active" : "cart-preview"}>
+                        <div className={this.state.showCart ? "cart-preview active" : "cart-preview"}>
                             <CartScrollBar>
                                 <ul className="cart-items">
                                     <li className="cart-item">
