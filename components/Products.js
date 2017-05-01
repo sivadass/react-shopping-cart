@@ -14,7 +14,7 @@ class Products extends Component{
     });
     return(
       <div className="products">
-          {productsData}
+          {this.props.productsList.length <= 0 ? "LOADING..." : productsData}
       </div>
     )
   }

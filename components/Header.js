@@ -29,7 +29,6 @@ class Header extends Component{
                                 <option>Vegetables</option>
                                 <option>Fruits</option>
                                 <option>Nuts</option>
-                                <option>Spices</option>
                             </select>
                             <input type="search" name="s" id="s" placeholder="Search" className="search-keyword"/>
                         </form>
