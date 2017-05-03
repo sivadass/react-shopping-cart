@@ -50,6 +50,11 @@ header{
     position: relative;
     z-index: 99;
 }
+.cart-info{
+    @media (max-width: 480px){
+        display: none;
+    }
+}
 .cart-info table{
     font-size: 14px;
     color: $primary-green;

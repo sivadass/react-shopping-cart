@@ -12,6 +12,8 @@ class App extends Component{
 		this.state = {
 			products: [],
 			cart: [],
+			totalItems: 0,
+			totalAmount: 0, 
 			term: '',
 			category: ''
 		};
@@ -19,6 +21,7 @@ class App extends Component{
 		this.handleCategory = this.handleCategory.bind(this);
 		this.handleAddToCart = this.handleAddToCart.bind(this);
 		this.sumTotalItems = this.sumTotalItems.bind(this);
+		this.sumTotalAmount = this.sumTotalAmount.bind(this);
 	}
 	// Fetch Initial Set of Products from external API
 	getProducts(){
@@ -53,19 +56,32 @@ class App extends Component{
 			console.log(this.state.cart);
 		});
 		this.sumTotalItems(this.state.cart);
+		this.sumTotalAmount(this.state.cart);
 	}
 	sumTotalItems(){
         let total = 0;
         let cart = this.state.cart;
         for (var i=0; i<cart.length; i++) {
-            total += cart[i].quantity;
+            total += parseInt(cart[i].quantity);
         }
-        console.log(total);
+		this.setState({
+			totalItems: total
+		})
+    }
+	sumTotalAmount(){
+        let total = 0;
+        let cart = this.state.cart;
+        for (var i=0; i<cart.length; i++) {
+            total += cart[i].price;
+        }
+		this.setState({
+			totalAmount: total
+		})
     }
 	render(){
 		return(
 			<div className="container">
-				<Header cartItems={this.state.cart} handleSearch={this.handleSearch} handleCategory={this.handleCategory} categoryTerm={this.state.category}/>
+				<Header total={this.state.totalAmount} totalItems={this.state.totalItems} cartItems={this.state.cart} handleSearch={this.handleSearch} handleCategory={this.handleCategory} categoryTerm={this.state.category}/>
 				<Products productsList={this.state.products} searchTerm={this.state.term} addToCart={this.handleAddToCart}/>
 				<Pagination />
 				<Footer />

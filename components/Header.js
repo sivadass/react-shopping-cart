@@ -61,12 +61,12 @@ class Header extends Component{
                                     <tr>
                                         <td>No. of items</td>
                                         <td>:</td>
-                                        <td><strong>7</strong></td>
+                                        <td><strong>{this.props.totalItems}</strong></td>
                                     </tr>
                                     <tr>
                                         <td>Sub Total</td>
                                         <td>:</td>
-                                        <td><strong>288</strong></td>
+                                        <td><strong>{this.props.total}</strong></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -76,21 +76,6 @@ class Header extends Component{
                         </a>
                         <div className={this.state.showCart ? "cart-preview active" : "cart-preview"}>
                             <CartScrollBar>
-                                {/*<ul className="cart-items">
-                                    <li className="cart-item">
-                                        <img className="product-image" src="https://res.cloudinary.com/sivadass/image/upload/v1493544034/dummy-products/broccoli.jpg" />
-                                        <div className="product-info">
-                                            <p className="product-name">Broccoli</p>
-                                            <p className="product-price">120</p>
-                                        </div>
-                                        <div className="stepper-input">
-                                            <a href="#" className="decrement">-</a>
-                                            <input type="number" defaultValue="1" className="quantity"/>
-                                            <a href="#" className="increment">+</a>
-                                        </div>
-                                        <a className="product-remove" href="#">&times;</a>
-                                    </li>
-                                </ul>*/}
                                 <CSSTransitionGroup
                                     transitionName="fadeIn"
                                     transitionEnterTimeout={500}

@@ -36,7 +36,7 @@ class Product extends Component{
                 <p className="product-price">{this.props.price}</p>
                 <div className="stepper-input">
                     <a href="#" className="decrement">-</a>
-                    <input ref="uv" type="number" defaultValue="1" className="quantity"/>
+                    <input ref="uv" type="number" defaultValue={1} className="quantity"/>
                     <a href="#" className="increment">+</a>
                 </div>
                 <div className="product-action">
