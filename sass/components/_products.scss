@@ -9,6 +9,7 @@
     max-width: 960px;
     margin: 0 auto;
     .product{
+        min-height: 355px;
         flex-basis: calc(25% - 32px);
         @media (max-width: 768px){
             flex-basis: calc(33% - 32px);
@@ -76,3 +77,52 @@
 .product:nth-child(12){
     transition-delay: 2200ms
 }
+
+
+// Loading
+.loading .product{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@-webkit-keyframes placeHolderShimmer {
+    0% {
+    background-position: -468px 0
+    }
+    100% {
+    background-position: 468px 0
+    }
+}
+
+@keyframes placeHolderShimmer {
+    0% {
+    background-position: -468px 0
+    }
+    100% {
+    background-position: 468px 0
+    }
+}
+
+.animated-background {
+	  -webkit-animation-duration: 1s;
+	  animation-duration: 1s;
+	  -webkit-animation-fill-mode: forwards;
+	  animation-fill-mode: forwards;
+	  -webkit-animation-iteration-count: infinite;
+	  animation-iteration-count: infinite;
+	  -webkit-animation-name: placeHolderShimmer;
+	  animation-name: placeHolderShimmer;
+	  -webkit-animation-timing-function: linear;
+	  animation-timing-function: linear;
+	  background: #f6f7f8;
+	  background: #eeeeee;
+	  background: -webkit-gradient(linear, left top, right top, color-stop(8%, #eeeeee), color-stop(18%, #dddddd), color-stop(33%, #eeeeee));
+	  background: -webkit-linear-gradient(left, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+	  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+	  -webkit-background-size: 800px 104px;
+	  background-size: 800px 104px;
+	  height: 96px;
+	  position: relative;
+	}
+	
