@@ -1,21 +1,15 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
-class LoadingProducts extends Component {
-	
-	render() {
-		return (
-			<div className="products loading">
-                <div className="product animated-background">LOADING...</div>
-                <div className="product animated-background">LOADING...</div>
-                <div className="product animated-background">LOADING...</div>
-                <div className="product animated-background">LOADING...</div>
-                <div className="product animated-background">LOADING...</div>
-                <div className="product animated-background">LOADING...</div>
-                <div className="product animated-background">LOADING...</div>
-                <div className="product animated-background">LOADING...</div>
-            </div>
-		)
-	}
-}
+const LoadingProduct = () =>{
+    return(
+        <div className="product loading">
+            <div className="product-image"></div>
+            <div className="product-text"></div>
+            <div className="product-text"></div>
+            <div className="product-text"></div>
+            <div className="product-button"></div>
+        </div>
+    )
+};
 
-export default LoadingProducts;
+export default LoadingProduct;

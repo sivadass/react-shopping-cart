@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Product from './Product';
-import LoadingProducts from '../loaders/Product';
+import LoadingProducts from '../loaders/Products';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
 class Products extends Component{
