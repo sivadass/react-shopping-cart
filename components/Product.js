@@ -1,26 +1,29 @@
 import React, {Component} from 'react';
+import Counter from './counter';
 
 class Product extends Component{
 	constructor(props){
 		super(props);
         this.state = {
-            selectedProduct: {}
+            selectedProduct: {},
+            quantity: 1
         }
-        //let textInput = null;
 	}
 
-    addToCart(image, name, price){
-        let qty = this.refs.uv.value;
+    addToCart(image, name, price, quantity){
         this.setState({
             selectedProduct: {
                 image: image,
                 name: name,
                 price: price,
-                quantity: qty
+                quantity: quantity
             }
         }, function(){
             this.props.addToCart(this.state.selectedProduct);
-            this.refs.uv.value = 1;
+            console.log("hello");
+            this.setState({
+                quantity: 1
+            })
         })
     }
 
@@ -28,19 +31,15 @@ class Product extends Component{
         let image = this.props.image;
         let name = this.props.name;
         let price = this.props.price;
-        //let quantity = this.refs.input;
+        let quantity = this.state.quantity;
         return(
             <div className="product">
                 <img className="product-image" src={image} alt={this.props.name}/>
                 <h4 className="product-name">{this.props.name}</h4>
                 <p className="product-price">{this.props.price}</p>
-                <div className="stepper-input">
-                    <a href="#" className="decrement">-</a>
-                    <input ref="uv" type="number" defaultValue={1} className="quantity"/>
-                    <a href="#" className="increment">+</a>
-                </div>
+                <Counter quantity={this.state.quantity}/>
                 <div className="product-action">
-                    <button onClick={this.addToCart.bind(this, image, name, price)}>ADD TO CART</button>
+                    <button onClick={this.addToCart.bind(this, image, name, price, quantity)}>ADD TO CART</button>
                 </div>
             </div>
         )

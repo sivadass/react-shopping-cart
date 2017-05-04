@@ -24,7 +24,7 @@ class Products extends Component{
 		});
 
 		return(
-			<div>
+			<div className="products-wrapper">
 				<CSSTransitionGroup
 				transitionName="fadeIn"
 				transitionEnterTimeout={500}
