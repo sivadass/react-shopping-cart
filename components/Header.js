@@ -72,7 +72,7 @@ class Header extends Component{
                             </table>
                         </div>
                         <a className="cart-icon" href="#" onClick={this.handleCart.bind(this)}>
-                            <img ref="cartIcon" src="https://res.cloudinary.com/sivadass/image/upload/v1493548928/icons/bag.png" alt="Cart"/>
+                            <img className={this.props.cartBounce ? "tada" : " "} src="https://res.cloudinary.com/sivadass/image/upload/v1493548928/icons/bag.png" alt="Cart"/>
                         </a>
                         <div className={this.state.showCart ? "cart-preview active" : "cart-preview"}>
                             <CartScrollBar>

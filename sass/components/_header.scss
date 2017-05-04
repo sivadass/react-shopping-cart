@@ -197,6 +197,7 @@ header{
 @keyframes tada {
   from {
     transform: scale3d(1, 1, 1);
+    opacity: 0;
   }
 
   10%, 20% {
@@ -213,6 +214,7 @@ header{
 
   to {
     transform: scale3d(1, 1, 1);
+    opacity: 1;
   }
 }
 

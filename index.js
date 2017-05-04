@@ -15,7 +15,8 @@ class App extends Component{
 			totalItems: 0,
 			totalAmount: 0, 
 			term: '',
-			category: ''
+			category: '',
+			cartBounce: false
 		};
 		this.handleSearch = this.handleSearch.bind(this);
 		this.handleCategory = this.handleCategory.bind(this);
@@ -51,10 +52,14 @@ class App extends Component{
 		let cartItem = this.state.cart;
 		cartItem.push(selectedProducts);
 		this.setState({
-			cart : cartItem
+			cart : cartItem,
+			cartBounce: true
 		}, function(){
 			console.log(this.state.cart);
 		});
+		setTimeout(function(){
+             this.setState({cartBounce:false});
+        }.bind(this),1000);  
 		this.sumTotalItems(this.state.cart);
 		this.sumTotalAmount(this.state.cart);
 	}
@@ -81,7 +86,7 @@ class App extends Component{
 	render(){
 		return(
 			<div className="container">
-				<Header total={this.state.totalAmount} totalItems={this.state.totalItems} cartItems={this.state.cart} handleSearch={this.handleSearch} handleCategory={this.handleCategory} categoryTerm={this.state.category}/>
+				<Header cartBounce={this.state.cartBounce} total={this.state.totalAmount} totalItems={this.state.totalItems} cartItems={this.state.cart} handleSearch={this.handleSearch} handleCategory={this.handleCategory} categoryTerm={this.state.category}/>
 				<Products productsList={this.state.products} searchTerm={this.state.term} addToCart={this.handleAddToCart}/>
 				<Pagination />
 				<Footer />
