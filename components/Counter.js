@@ -21,12 +21,18 @@ class Counter extends Component {
 			}));
 		}
 	};
-  
+	feed = (e) =>{
+		this.setState({
+			value: this.refs.feedQty.value
+		}, function(){
+			console.log(this.state.value)
+		})
+	};
 	render() {
 		return (
 			<div className="stepper-input">
 				<a href="#" className="decrement" onClick={this.decrement}>-</a>
-				<span className="quantity">{this.state.value}</span>
+				<input ref="feedQty" type="number" className="quantity" value={this.state.value} onChange={this.feed} />
 				<a href="#" className="increment" onClick={this.increment}>+</a>
 			</div>
 		)
