@@ -17,7 +17,7 @@ class App extends Component{
 			term: '',
 			category: '',
 			cartBounce: false,
-			moq: 1
+			quantity : 1
 		};
 		this.handleSearch = this.handleSearch.bind(this);
 		this.handleCategory = this.handleCategory.bind(this);
@@ -25,6 +25,8 @@ class App extends Component{
 		this.sumTotalItems = this.sumTotalItems.bind(this);
 		this.sumTotalAmount = this.sumTotalAmount.bind(this);
 		this.checkProduct = this.checkProduct.bind(this);
+		this.updateQuantity = this.updateQuantity.bind(this);
+		this.handleRemoveProduct = this.handleRemoveProduct.bind(this);
 	}
 	// Fetch Initial Set of Products from external API
 	getProducts(){
@@ -65,15 +67,24 @@ class App extends Component{
 		}
 		this.setState({
 			cart : cartItem,
-			cartBounce: true
-		}, function(){
-			console.log(this.state.cart);
+			cartBounce: true,
 		});
 		setTimeout(function(){
              this.setState({cartBounce:false});
         }.bind(this),1000);  
 		this.sumTotalItems(this.state.cart);
 		this.sumTotalAmount(this.state.cart);
+	}
+	handleRemoveProduct(id, e){
+		let cart = this.state.cart;
+		let index = cart.findIndex((x => x.id == id));
+		cart.splice(index, 1);
+		this.setState({
+			cart: cart
+		})
+		this.sumTotalItems(this.state.cart);
+		this.sumTotalAmount(this.state.cart);
+		e.preventDefault();
 	}
 	checkProduct(productID){
 		let cart = this.state.cart;
@@ -99,11 +110,42 @@ class App extends Component{
 			totalAmount: total
 		})
     }
+	//Update Quantity
+	updateQuantity(qty){
+		console.log("hola!")
+        this.setState({
+            moq: qty
+        })
+	}
+	//Reset Quantity
+	updateQuantity(qty){
+		console.log("hola!")
+        this.setState({
+            quantity: qty
+        })
+	}
 	render(){
 		return(
 			<div className="container">
-				<Header cartBounce={this.state.cartBounce} total={this.state.totalAmount} totalItems={this.state.totalItems} cartItems={this.state.cart} handleSearch={this.handleSearch} handleCategory={this.handleCategory} categoryTerm={this.state.category}/>
-				<Products productsList={this.state.products} searchTerm={this.state.term} addToCart={this.handleAddToCart} updateQuantity={this.updateQuantity}/>
+				<Header
+					cartBounce={this.state.cartBounce}
+					total={this.state.totalAmount}
+					totalItems={this.state.totalItems}
+					cartItems={this.state.cart}
+					removeProduct={this.handleRemoveProduct}
+					handleSearch={this.handleSearch}
+					handleCategory={this.handleCategory}
+					categoryTerm={this.state.category}
+					updateQuantity={this.updateQuantity}
+					productQuantity = {this.state.moq}
+				/>
+				<Products
+					productsList={this.state.products}
+					searchTerm={this.state.term}
+					addToCart={this.handleAddToCart}
+					productQuantity = {this.state.quantity}
+					updateQuantity={this.updateQuantity}
+				/>
 				<Pagination />
 				<Footer />
 			</div>

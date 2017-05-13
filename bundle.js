@@ -100,7 +100,7 @@
 				term: '',
 				category: '',
 				cartBounce: false,
-				moq: 1
+				quantity: 1
 			};
 			_this.handleSearch = _this.handleSearch.bind(_this);
 			_this.handleCategory = _this.handleCategory.bind(_this);
@@ -108,6 +108,8 @@
 			_this.sumTotalItems = _this.sumTotalItems.bind(_this);
 			_this.sumTotalAmount = _this.sumTotalAmount.bind(_this);
 			_this.checkProduct = _this.checkProduct.bind(_this);
+			_this.updateQuantity = _this.updateQuantity.bind(_this);
+			_this.handleRemoveProduct = _this.handleRemoveProduct.bind(_this);
 			return _this;
 		}
 		// Fetch Initial Set of Products from external API
@@ -168,14 +170,27 @@
 				this.setState({
 					cart: cartItem,
 					cartBounce: true
-				}, function () {
-					console.log(this.state.cart);
 				});
 				setTimeout(function () {
 					this.setState({ cartBounce: false });
 				}.bind(this), 1000);
 				this.sumTotalItems(this.state.cart);
 				this.sumTotalAmount(this.state.cart);
+			}
+		}, {
+			key: 'handleRemoveProduct',
+			value: function handleRemoveProduct(id, e) {
+				var cart = this.state.cart;
+				var index = cart.findIndex(function (x) {
+					return x.id == id;
+				});
+				cart.splice(index, 1);
+				this.setState({
+					cart: cart
+				});
+				this.sumTotalItems(this.state.cart);
+				this.sumTotalAmount(this.state.cart);
+				e.preventDefault();
 			}
 		}, {
 			key: 'checkProduct',
@@ -207,14 +222,51 @@
 					totalAmount: total
 				});
 			}
+			//Update Quantity
+
+		}, {
+			key: 'updateQuantity',
+			value: function updateQuantity(qty) {
+				console.log("hola!");
+				this.setState({
+					moq: qty
+				});
+			}
+			//Reset Quantity
+
+		}, {
+			key: 'updateQuantity',
+			value: function updateQuantity(qty) {
+				console.log("hola!");
+				this.setState({
+					quantity: qty
+				});
+			}
 		}, {
 			key: 'render',
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
 					{ className: 'container' },
-					_react2.default.createElement(_Header2.default, { cartBounce: this.state.cartBounce, total: this.state.totalAmount, totalItems: this.state.totalItems, cartItems: this.state.cart, handleSearch: this.handleSearch, handleCategory: this.handleCategory, categoryTerm: this.state.category }),
-					_react2.default.createElement(_Products2.default, { productsList: this.state.products, searchTerm: this.state.term, addToCart: this.handleAddToCart, updateQuantity: this.updateQuantity }),
+					_react2.default.createElement(_Header2.default, {
+						cartBounce: this.state.cartBounce,
+						total: this.state.totalAmount,
+						totalItems: this.state.totalItems,
+						cartItems: this.state.cart,
+						removeProduct: this.handleRemoveProduct,
+						handleSearch: this.handleSearch,
+						handleCategory: this.handleCategory,
+						categoryTerm: this.state.category,
+						updateQuantity: this.updateQuantity,
+						productQuantity: this.state.moq
+					}),
+					_react2.default.createElement(_Products2.default, {
+						productsList: this.state.products,
+						searchTerm: this.state.term,
+						addToCart: this.handleAddToCart,
+						productQuantity: this.state.quantity,
+						updateQuantity: this.updateQuantity
+					}),
 					_react2.default.createElement(_Pagination2.default, null),
 					_react2.default.createElement(_Footer2.default, null)
 				);
@@ -25533,6 +25585,10 @@
 
 	var _CartScrollBar2 = _interopRequireDefault(_CartScrollBar);
 
+	var _counter = __webpack_require__(247);
+
+	var _counter2 = _interopRequireDefault(_counter);
+
 	var _CSSTransitionGroup = __webpack_require__(232);
 
 	var _CSSTransitionGroup2 = _interopRequireDefault(_CSSTransitionGroup);
@@ -25569,8 +25625,15 @@
 	            });
 	        }
 	    }, {
+	        key: 'handleSubmit',
+	        value: function handleSubmit(e) {
+	            e.preventDefault();
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
+	            var _this2 = this;
+
 	            var cartItems = void 0;
 	            cartItems = this.state.cart.map(function (product) {
 	                return _react2.default.createElement(
@@ -25591,24 +25654,10 @@
 	                            product.price
 	                        )
 	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'stepper-input' },
-	                        _react2.default.createElement(
-	                            'a',
-	                            { href: '#', className: 'decrement' },
-	                            '-'
-	                        ),
-	                        _react2.default.createElement('input', { type: 'number', defaultValue: product.quantity, className: 'quantity' }),
-	                        _react2.default.createElement(
-	                            'a',
-	                            { href: '#', className: 'increment' },
-	                            '+'
-	                        )
-	                    ),
+	                    _react2.default.createElement(_counter2.default, { productQuantity: product.quantity, updateQuantity: _this2.props.updateQuantity }),
 	                    _react2.default.createElement(
 	                        'a',
-	                        { className: 'product-remove', href: '#' },
+	                        { className: 'product-remove', href: '#', onClick: _this2.props.removeProduct.bind(_this2, product.id) },
 	                        '\xD7'
 	                    )
 	                );
@@ -25630,31 +25679,8 @@
 	                        _react2.default.createElement(
 	                            'form',
 	                            { action: '#', method: 'get', className: 'search-form' },
-	                            _react2.default.createElement(
-	                                'select',
-	                                { className: 'search-category', onChange: this.props.handleCategory.bind(this), defaultValue: this.props.categoryTerm },
-	                                _react2.default.createElement(
-	                                    'option',
-	                                    { value: 'all' },
-	                                    'All'
-	                                ),
-	                                _react2.default.createElement(
-	                                    'option',
-	                                    { value: 'vegetables' },
-	                                    'Vegetables'
-	                                ),
-	                                _react2.default.createElement(
-	                                    'option',
-	                                    { value: 'fruits' },
-	                                    'Fruits'
-	                                ),
-	                                _react2.default.createElement(
-	                                    'option',
-	                                    { value: 'nuts' },
-	                                    'Nuts'
-	                                )
-	                            ),
-	                            _react2.default.createElement('input', { type: 'search', name: 's', id: 's', placeholder: 'Search', className: 'search-keyword', onChange: this.props.handleSearch })
+	                            _react2.default.createElement('input', { type: 'search', name: 's', id: 's', placeholder: 'Search for Vegetables and Fruits', className: 'search-keyword', onChange: this.props.handleSearch }),
+	                            _react2.default.createElement('button', { className: 'search-button', type: 'submit', onClick: this.handleSubmit.bind(this) })
 	                        )
 	                    ),
 	                    _react2.default.createElement(
@@ -28549,7 +28575,7 @@
 					};
 				}
 				productsData = this.props.productsList.filter(searchingFor(term)).map(function (product) {
-					return _react2.default.createElement(_Product2.default, { key: product.id, price: product.price, name: product.name, image: product.image, id: product.id, addToCart: _this2.props.addToCart });
+					return _react2.default.createElement(_Product2.default, { key: product.id, price: product.price, name: product.name, image: product.image, id: product.id, addToCart: _this2.props.addToCart, productQuantity: _this2.props.productQuantity, updateQuantity: _this2.props.updateQuantity });
 				});
 
 				return _react2.default.createElement(
@@ -28611,10 +28637,8 @@
 	        var _this = _possibleConstructorReturn(this, (Product.__proto__ || Object.getPrototypeOf(Product)).call(this, props));
 
 	        _this.state = {
-	            selectedProduct: {},
-	            quantity: 1
+	            selectedProduct: {}
 	        };
-	        _this.updateQuantity = _this.updateQuantity.bind(_this);
 	        return _this;
 	    }
 
@@ -28631,18 +28655,6 @@
 	                }
 	            }, function () {
 	                this.props.addToCart(this.state.selectedProduct);
-	                this.setState({
-	                    quantity: 1
-	                });
-	            });
-	        }
-	        //Update Quantity
-
-	    }, {
-	        key: 'updateQuantity',
-	        value: function updateQuantity(qty) {
-	            this.setState({
-	                quantity: qty
 	            });
 	        }
 	    }, {
@@ -28652,7 +28664,7 @@
 	            var name = this.props.name;
 	            var price = this.props.price;
 	            var id = this.props.id;
-	            var quantity = this.state.quantity;
+	            var quantity = this.props.productQuantity;
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'product' },
@@ -28667,7 +28679,7 @@
 	                    { className: 'product-price' },
 	                    this.props.price
 	                ),
-	                _react2.default.createElement(_counter2.default, { productQuantity: this.state.quantity, updateQuantity: this.updateQuantity }),
+	                _react2.default.createElement(_counter2.default, { productQuantity: quantity, updateQuantity: this.props.updateQuantity }),
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'product-action' },
@@ -28985,8 +28997,8 @@
 	            null,
 	            _react2.default.createElement(
 	                "a",
-	                { "class": "github-button", href: "https://github.com/sivadass/react-shopping-cart/fork", "data-icon": "octicon-repo-forked", "data-size": "large", "data-show-count": "true", "aria-label": "Fork sivadass/react-shopping-cart on GitHub" },
-	                "Fork"
+	                { className: "github-button", href: "https://github.com/sivadass/react-shopping-cart/fork", "data-icon": "octicon-repo-forked", "data-size": "large", "data-show-count": "true", "aria-label": "Fork sivadass/react-shopping-cart on GitHub" },
+	                "Fork it"
 	            )
 	        )
 	    );

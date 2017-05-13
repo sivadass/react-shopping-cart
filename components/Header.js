@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import CartScrollBar from './CartScrollBar';
+import Counter from './counter';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
 class Header extends Component{
@@ -16,6 +17,9 @@ class Header extends Component{
             showCart: !this.state.showCart
         })
     }
+    handleSubmit(e){
+        e.preventDefault();
+    }
     render(){
         let cartItems;
         cartItems = this.state.cart.map(product =>{
@@ -26,12 +30,8 @@ class Header extends Component{
                         <p className="product-name">{product.name}</p>
                         <p className="product-price">{product.price}</p>
                     </div>
-                    <div className="stepper-input">
-                        <a href="#" className="decrement">-</a>
-                        <input type="number" defaultValue={product.quantity} className="quantity"/>
-                        <a href="#" className="increment">+</a>
-                    </div>
-                    <a className="product-remove" href="#">&times;</a>
+                    <Counter productQuantity={product.quantity} updateQuantity={this.props.updateQuantity}/>
+                    <a className="product-remove" href="#" onClick={this.props.removeProduct.bind(this, product.id)}>&times;</a>
                 </li>
 			)
 		});
@@ -44,13 +44,8 @@ class Header extends Component{
                         
                     <div className="search">
                         <form action="#" method="get" className="search-form">
-                            <select className="search-category" onChange={this.props.handleCategory.bind(this)}  defaultValue={this.props.categoryTerm}>
-                                <option value="all">All</option>
-                                <option value="vegetables">Vegetables</option>
-                                <option value="fruits">Fruits</option>
-                                <option value="nuts">Nuts</option>
-                            </select>
-                            <input type="search" name="s" id="s" placeholder="Search" className="search-keyword" onChange={this.props.handleSearch}/>
+                            <input type="search" name="s" id="s" placeholder="Search for Vegetables and Fruits" className="search-keyword" onChange={this.props.handleSearch}/>
+                            <button className="search-button" type="submit" onClick={this.handleSubmit.bind(this)}></button>
                         </form>
                     </div>
 

@@ -39,20 +39,21 @@ header{
 .search-form{
     display: flex;
     display: -webkit-flex;
-    .search-category,
     .search-keyword{
         height: 36px;
         border: 1px solid $primary-green;
         padding: 0 16px;
-    }
-     .search-category{
         border-radius: 2px 0 0 2px;
-        background: $primary-green;
-        color: $white;
-    }
-    .search-keyword{
-        border-radius: 0 2px 2px 0;
         width: 100%;
+        max-width: 330px;
+        &:focus{
+            outline: none;
+        }
+    }
+    .search-button{
+        border-radius: 0 2px 2px 0;
+        background: $primary-green url(https://res.cloudinary.com/sivadass/image/upload/v1494692031/icons/search.png) center no-repeat;
+        width: 96px;
     }
 }
 
