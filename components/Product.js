@@ -8,6 +8,7 @@ class Product extends Component{
             selectedProduct: {},
             quantity: 1
         }
+        this.updateQuantity = this.updateQuantity.bind(this);
 	}
 
     addToCart(image, name, price, quantity){
@@ -20,13 +21,17 @@ class Product extends Component{
             }
         }, function(){
             this.props.addToCart(this.state.selectedProduct);
-            console.log("hello");
             this.setState({
                 quantity: 1
             })
         })
     }
-
+    //Update Quantity
+	updateQuantity(qty){
+        this.setState({
+            quantity: qty
+        })
+	}
     render(){
         let image = this.props.image;
         let name = this.props.name;
@@ -37,7 +42,7 @@ class Product extends Component{
                 <img className="product-image" src={image} alt={this.props.name}/>
                 <h4 className="product-name">{this.props.name}</h4>
                 <p className="product-price">{this.props.price}</p>
-                <Counter quantity={this.state.quantity}/>
+                <Counter productQuantity={this.state.quantity} updateQuantity={this.updateQuantity}/>
                 <div className="product-action">
                     <button onClick={this.addToCart.bind(this, image, name, price, quantity)}>ADD TO CART</button>
                 </div>
