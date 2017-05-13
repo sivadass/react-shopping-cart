@@ -17,12 +17,14 @@ class App extends Component{
 			term: '',
 			category: '',
 			cartBounce: false,
+			moq: 1
 		};
 		this.handleSearch = this.handleSearch.bind(this);
 		this.handleCategory = this.handleCategory.bind(this);
 		this.handleAddToCart = this.handleAddToCart.bind(this);
 		this.sumTotalItems = this.sumTotalItems.bind(this);
 		this.sumTotalAmount = this.sumTotalAmount.bind(this);
+		this.checkProduct = this.checkProduct.bind(this);
 	}
 	// Fetch Initial Set of Products from external API
 	getProducts(){
@@ -50,7 +52,17 @@ class App extends Component{
 	// Add to Cart
 	handleAddToCart(selectedProducts){
 		let cartItem = this.state.cart;
-		cartItem.push(selectedProducts);
+		let productID = selectedProducts.id;
+		let productQty = selectedProducts.quantity;
+		if(this.checkProduct(productID)){
+			let index = cartItem.findIndex((x => x.id == productID));
+			cartItem[index].quantity = Number(cartItem[index].quantity) + Number(productQty);
+			this.setState({
+				cart: cartItem
+			})
+		} else {
+			cartItem.push(selectedProducts);
+		}
 		this.setState({
 			cart : cartItem,
 			cartBounce: true
@@ -63,12 +75,16 @@ class App extends Component{
 		this.sumTotalItems(this.state.cart);
 		this.sumTotalAmount(this.state.cart);
 	}
+	checkProduct(productID){
+		let cart = this.state.cart;
+		return cart.some(function(item) {
+			return item.id === productID;
+		}); 
+	}
 	sumTotalItems(){
         let total = 0;
         let cart = this.state.cart;
-        for (var i=0; i<cart.length; i++) {
-            total += parseInt(cart[i].quantity);
-        }
+		total = cart.length;
 		this.setState({
 			totalItems: total
 		})
@@ -77,7 +93,7 @@ class App extends Component{
         let total = 0;
         let cart = this.state.cart;
         for (var i=0; i<cart.length; i++) {
-            total += cart[i].price;
+            total += cart[i].price * parseInt(cart[i].quantity);
         }
 		this.setState({
 			totalAmount: total

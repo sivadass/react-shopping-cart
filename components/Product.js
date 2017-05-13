@@ -11,12 +11,13 @@ class Product extends Component{
         this.updateQuantity = this.updateQuantity.bind(this);
 	}
 
-    addToCart(image, name, price, quantity){
+    addToCart(image, name, price, id, quantity){
         this.setState({
             selectedProduct: {
                 image: image,
                 name: name,
                 price: price,
+                id: id,
                 quantity: quantity
             }
         }, function(){
@@ -36,6 +37,7 @@ class Product extends Component{
         let image = this.props.image;
         let name = this.props.name;
         let price = this.props.price;
+        let id = this.props.id;
         let quantity = this.state.quantity;
         return(
             <div className="product">
@@ -44,7 +46,7 @@ class Product extends Component{
                 <p className="product-price">{this.props.price}</p>
                 <Counter productQuantity={this.state.quantity} updateQuantity={this.updateQuantity}/>
                 <div className="product-action">
-                    <button onClick={this.addToCart.bind(this, image, name, price, quantity)}>ADD TO CART</button>
+                    <button onClick={this.addToCart.bind(this, image, name, price, id, quantity)}>ADD TO CART</button>
                 </div>
             </div>
         )

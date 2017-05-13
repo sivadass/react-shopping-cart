@@ -99,13 +99,15 @@
 				totalAmount: 0,
 				term: '',
 				category: '',
-				cartBounce: false
+				cartBounce: false,
+				moq: 1
 			};
 			_this.handleSearch = _this.handleSearch.bind(_this);
 			_this.handleCategory = _this.handleCategory.bind(_this);
 			_this.handleAddToCart = _this.handleAddToCart.bind(_this);
 			_this.sumTotalItems = _this.sumTotalItems.bind(_this);
 			_this.sumTotalAmount = _this.sumTotalAmount.bind(_this);
+			_this.checkProduct = _this.checkProduct.bind(_this);
 			return _this;
 		}
 		// Fetch Initial Set of Products from external API
@@ -150,7 +152,19 @@
 			key: 'handleAddToCart',
 			value: function handleAddToCart(selectedProducts) {
 				var cartItem = this.state.cart;
-				cartItem.push(selectedProducts);
+				var productID = selectedProducts.id;
+				var productQty = selectedProducts.quantity;
+				if (this.checkProduct(productID)) {
+					var index = cartItem.findIndex(function (x) {
+						return x.id == productID;
+					});
+					cartItem[index].quantity = Number(cartItem[index].quantity) + Number(productQty);
+					this.setState({
+						cart: cartItem
+					});
+				} else {
+					cartItem.push(selectedProducts);
+				}
 				this.setState({
 					cart: cartItem,
 					cartBounce: true
@@ -164,13 +178,19 @@
 				this.sumTotalAmount(this.state.cart);
 			}
 		}, {
+			key: 'checkProduct',
+			value: function checkProduct(productID) {
+				var cart = this.state.cart;
+				return cart.some(function (item) {
+					return item.id === productID;
+				});
+			}
+		}, {
 			key: 'sumTotalItems',
 			value: function sumTotalItems() {
 				var total = 0;
 				var cart = this.state.cart;
-				for (var i = 0; i < cart.length; i++) {
-					total += parseInt(cart[i].quantity);
-				}
+				total = cart.length;
 				this.setState({
 					totalItems: total
 				});
@@ -181,7 +201,7 @@
 				var total = 0;
 				var cart = this.state.cart;
 				for (var i = 0; i < cart.length; i++) {
-					total += cart[i].price;
+					total += cart[i].price * parseInt(cart[i].quantity);
 				}
 				this.setState({
 					totalAmount: total
@@ -28529,7 +28549,7 @@
 					};
 				}
 				productsData = this.props.productsList.filter(searchingFor(term)).map(function (product) {
-					return _react2.default.createElement(_Product2.default, { key: product.id, price: product.price, name: product.name, image: product.image, addToCart: _this2.props.addToCart });
+					return _react2.default.createElement(_Product2.default, { key: product.id, price: product.price, name: product.name, image: product.image, id: product.id, addToCart: _this2.props.addToCart });
 				});
 
 				return _react2.default.createElement(
@@ -28600,12 +28620,13 @@
 
 	    _createClass(Product, [{
 	        key: 'addToCart',
-	        value: function addToCart(image, name, price, quantity) {
+	        value: function addToCart(image, name, price, id, quantity) {
 	            this.setState({
 	                selectedProduct: {
 	                    image: image,
 	                    name: name,
 	                    price: price,
+	                    id: id,
 	                    quantity: quantity
 	                }
 	            }, function () {
@@ -28630,6 +28651,7 @@
 	            var image = this.props.image;
 	            var name = this.props.name;
 	            var price = this.props.price;
+	            var id = this.props.id;
 	            var quantity = this.state.quantity;
 	            return _react2.default.createElement(
 	                'div',
@@ -28651,7 +28673,7 @@
 	                    { className: 'product-action' },
 	                    _react2.default.createElement(
 	                        'button',
-	                        { onClick: this.addToCart.bind(this, image, name, price, quantity) },
+	                        { onClick: this.addToCart.bind(this, image, name, price, id, quantity) },
 	                        'ADD TO CART'
 	                    )
 	                )
