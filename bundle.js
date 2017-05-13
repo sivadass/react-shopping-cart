@@ -28539,6 +28539,10 @@
 
 	var _Products2 = _interopRequireDefault(_Products);
 
+	var _NoResults = __webpack_require__(252);
+
+	var _NoResults2 = _interopRequireDefault(_NoResults);
+
 	var _CSSTransitionGroup = __webpack_require__(232);
 
 	var _CSSTransitionGroup2 = _interopRequireDefault(_CSSTransitionGroup);
@@ -28578,10 +28582,14 @@
 					return _react2.default.createElement(_Product2.default, { key: product.id, price: product.price, name: product.name, image: product.image, id: product.id, addToCart: _this2.props.addToCart, productQuantity: _this2.props.productQuantity, updateQuantity: _this2.props.updateQuantity });
 				});
 
-				return _react2.default.createElement(
-					'div',
-					{ className: 'products-wrapper' },
-					productsData.length <= 0 ? _react2.default.createElement(_Products2.default, null) : _react2.default.createElement(
+				// Empty and Loading States
+				var view = void 0;
+				if (productsData.length <= 0 && !term) {
+					view = _react2.default.createElement(_Products2.default, null);
+				} else if (productsData.length <= 0 && term) {
+					view = _react2.default.createElement(_NoResults2.default, null);
+				} else {
+					view = _react2.default.createElement(
 						_CSSTransitionGroup2.default,
 						{
 							transitionName: 'fadeIn',
@@ -28590,7 +28598,12 @@
 							component: 'div',
 							className: 'products' },
 						productsData
-					)
+					);
+				}
+				return _react2.default.createElement(
+					'div',
+					{ className: 'products-wrapper' },
+					view
 				);
 			}
 		}]);
@@ -29005,6 +29018,46 @@
 	};
 
 	exports.default = Footer;
+
+/***/ }),
+/* 252 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var NoResults = function NoResults() {
+	    return _react2.default.createElement(
+	        "div",
+	        { className: "products" },
+	        _react2.default.createElement(
+	            "div",
+	            { className: "no-results" },
+	            _react2.default.createElement("img", { src: "https://res.cloudinary.com/sivadass/image/upload/v1494699523/icons/bare-tree.png", alt: "Empty Tree" }),
+	            _react2.default.createElement(
+	                "h2",
+	                null,
+	                "Sorry, no products matched your search!"
+	            ),
+	            _react2.default.createElement(
+	                "p",
+	                null,
+	                "Enter a different keyword and try."
+	            )
+	        )
+	    );
+	};
+
+	exports.default = NoResults;
 
 /***/ })
 /******/ ]);
