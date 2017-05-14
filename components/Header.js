@@ -47,7 +47,7 @@ class Header extends Component{
                         <p className="product-price">{product.price}</p>
                     </div>
                     
-                    <a className="product-remove" href="#" onClick={this.props.removeProduct.bind(this, product.id)}>&times;</a>
+                    <a className="product-remove" href="#" onClick={this.props.removeProduct.bind(this, product.id)}>×</a>
                 </li>
 			)
 		});

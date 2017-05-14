@@ -39,9 +39,9 @@ class Counter extends Component {
 	render() {
 		return (
 			<div className="stepper-input">
-				<a href="#" className="decrement" onClick={this.decrement}>&ndash;</a>
+				<a href="#" className="decrement" onClick={this.decrement}>–</a>
 				<input ref="feedQty" type="number" className="quantity" value={this.state.value} onChange={this.feed.bind(this)} />
-				<a href="#" className="increment" onClick={this.increment}>&#43;</a>
+				<a href="#" className="increment" onClick={this.increment}>+</a>
 			</div>
 		)
 	}
