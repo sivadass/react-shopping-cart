@@ -23,6 +23,7 @@ class App extends Component{
 			modalActive: false
 		};
 		this.handleSearch = this.handleSearch.bind(this);
+		this.handleMobileSearch = this.handleMobileSearch.bind(this);
 		this.handleCategory = this.handleCategory.bind(this);
 		this.handleAddToCart = this.handleAddToCart.bind(this);
 		this.sumTotalItems = this.sumTotalItems.bind(this);
@@ -35,7 +36,7 @@ class App extends Component{
 	}
 	// Fetch Initial Set of Products from external API
 	getProducts(){
-		let url = "http://api.myjson.com/bins/b1jrd";
+		let url = "https://quarkbackend.com/getfile/sivadass/products";
 		axios.get(url)
 			.then(response => {
 				this.setState({
@@ -50,6 +51,10 @@ class App extends Component{
 	// Search by Keyword
 	handleSearch(event){
 		this.setState({term: event.target.value});
+	}
+	// Mobile Search Reset
+	handleMobileSearch(){
+		this.setState({term: ""});
 	}
 	// Filter by Category
 	handleCategory(event){
@@ -153,20 +158,20 @@ class App extends Component{
 					cartItems={this.state.cart}
 					removeProduct={this.handleRemoveProduct}
 					handleSearch={this.handleSearch}
+					handleMobileSearch={this.handleMobileSearch}
 					handleCategory={this.handleCategory}
 					categoryTerm={this.state.category}
 					updateQuantity={this.updateQuantity}
-					productQuantity = {this.state.moq}
+					productQuantity={this.state.moq}
 				/>
 				<Products
 					productsList={this.state.products}
 					searchTerm={this.state.term}
 					addToCart={this.handleAddToCart}
-					productQuantity = {this.state.quantity}
+					productQuantity={this.state.quantity}
 					updateQuantity={this.updateQuantity}
 					openModal={this.openModal}
 				/>
-				<Pagination />
 				<Footer />
 				<QuickView product={this.state.quickViewProduct} openModal={this.state.modalActive} closeModal={this.closeModal} />
 			</div>

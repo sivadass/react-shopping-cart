@@ -33,7 +33,7 @@ class Header extends Component{
             mobileSearch: false
         }, function(){
             this.refs.searchBox.value = "";
-            this.props.handleSearch(this.refs.searchBox.value);
+            this.props.handleMobileSearch();
         })
     }
     render(){
