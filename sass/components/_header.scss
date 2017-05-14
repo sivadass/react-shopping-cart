@@ -259,21 +259,29 @@ header{
             font-size: 14px;
         }
         .product-price{
-            color: $gray-dark;
+            color: $gray-light;
             font-weight: 700;
             &:before{
                 content: "Rs. "
             }
         }
     }
-    .stepper-input{
+    .product-total{
         margin-left: 16px;
-        margin-right: 0;
-        .quantity{
-            margin-left: 8px;
-            margin-right: 8px;
-            width: 36px;
+         .quantity{
+            color: $gray-light;
+            font-size: 14px;
+            text-align: right;
         }
+        .amount{
+            color: $gray-dark;
+            font-weight: 700;
+            text-align: right;
+            &:before{
+                content: "Rs. "
+            }
+        }
+        
     }
     .product-remove{
         margin-left: 24px;
@@ -282,6 +290,7 @@ header{
         width: 24px;
         font-size: 22px;
         color: $gray-eighty;
+        text-align: center;
         &:hover{
             color: $red;
         }
