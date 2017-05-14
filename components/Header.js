@@ -8,7 +8,8 @@ class Header extends Component{
         super(props);
         this.state = {
             showCart: false,
-            cart: this.props.cartItems
+            cart: this.props.cartItems,
+            mobileSearch: false
         };
     }
     handleCart(e){
@@ -19,6 +20,21 @@ class Header extends Component{
     }
     handleSubmit(e){
         e.preventDefault();
+    }
+    handleMobileSearch(e){
+        e.preventDefault();
+        this.setState({
+            mobileSearch: true
+        })
+    }
+    handleSearchNav(e){
+        e.preventDefault();
+        this.setState({
+            mobileSearch: false
+        }, function(){
+            this.refs.searchBox.value = "";
+            this.props.handleSearch(this.refs.searchBox.value);
+        })
     }
     render(){
         let cartItems;
@@ -43,8 +59,10 @@ class Header extends Component{
                     </div>
                         
                     <div className="search">
-                        <form action="#" method="get" className="search-form">
-                            <input type="search" name="s" id="s" placeholder="Search for Vegetables and Fruits" className="search-keyword" onChange={this.props.handleSearch}/>
+                        <a className="mobile-search" href="#" onClick={this.handleMobileSearch.bind(this)}><img src="https://res.cloudinary.com/sivadass/image/upload/v1494756966/icons/search-green.png" alt="search"/></a>
+                        <form action="#" method="get" className={this.state.mobileSearch ? "search-form active" : "search-form"}>
+                            <a className="back-button" href="#" onClick={this.handleSearchNav.bind(this)}><img src="https://res.cloudinary.com/sivadass/image/upload/v1494756030/icons/back.png" alt="back"/></a>
+                            <input type="search" ref="searchBox" placeholder="Search for Vegetables and Fruits" className="search-keyword" onChange={this.props.handleSearch}/>
                             <button className="search-button" type="submit" onClick={this.handleSubmit.bind(this)}></button>
                         </form>
                     </div>
@@ -68,6 +86,7 @@ class Header extends Component{
                         </div>
                         <a className="cart-icon" href="#" onClick={this.handleCart.bind(this)}>
                             <img className={this.props.cartBounce ? "tada" : " "} src="https://res.cloudinary.com/sivadass/image/upload/v1493548928/icons/bag.png" alt="Cart"/>
+                            {this.props.totalItems ? <span className="cart-count">{this.props.totalItems}</span> : "" }
                         </a>
                         <div className={this.state.showCart ? "cart-preview active" : "cart-preview"}>
                             <CartScrollBar>

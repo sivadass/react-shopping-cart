@@ -25640,7 +25640,8 @@
 
 	        _this.state = {
 	            showCart: false,
-	            cart: _this.props.cartItems
+	            cart: _this.props.cartItems,
+	            mobileSearch: false
 	        };
 	        return _this;
 	    }
@@ -25657,6 +25658,25 @@
 	        key: 'handleSubmit',
 	        value: function handleSubmit(e) {
 	            e.preventDefault();
+	        }
+	    }, {
+	        key: 'handleMobileSearch',
+	        value: function handleMobileSearch(e) {
+	            e.preventDefault();
+	            this.setState({
+	                mobileSearch: true
+	            });
+	        }
+	    }, {
+	        key: 'handleSearchNav',
+	        value: function handleSearchNav(e) {
+	            e.preventDefault();
+	            this.setState({
+	                mobileSearch: false
+	            }, function () {
+	                this.refs.searchBox.value = "";
+	                this.props.handleSearch(this.refs.searchBox.value);
+	            });
 	        }
 	    }, {
 	        key: 'render',
@@ -25706,9 +25726,19 @@
 	                        'div',
 	                        { className: 'search' },
 	                        _react2.default.createElement(
+	                            'a',
+	                            { className: 'mobile-search', href: '#', onClick: this.handleMobileSearch.bind(this) },
+	                            _react2.default.createElement('img', { src: 'https://res.cloudinary.com/sivadass/image/upload/v1494756966/icons/search-green.png', alt: 'search' })
+	                        ),
+	                        _react2.default.createElement(
 	                            'form',
-	                            { action: '#', method: 'get', className: 'search-form' },
-	                            _react2.default.createElement('input', { type: 'search', name: 's', id: 's', placeholder: 'Search for Vegetables and Fruits', className: 'search-keyword', onChange: this.props.handleSearch }),
+	                            { action: '#', method: 'get', className: this.state.mobileSearch ? "search-form active" : "search-form" },
+	                            _react2.default.createElement(
+	                                'a',
+	                                { className: 'back-button', href: '#', onClick: this.handleSearchNav.bind(this) },
+	                                _react2.default.createElement('img', { src: 'https://res.cloudinary.com/sivadass/image/upload/v1494756030/icons/back.png', alt: 'back' })
+	                            ),
+	                            _react2.default.createElement('input', { type: 'search', ref: 'searchBox', placeholder: 'Search for Vegetables and Fruits', className: 'search-keyword', onChange: this.props.handleSearch }),
 	                            _react2.default.createElement('button', { className: 'search-button', type: 'submit', onClick: this.handleSubmit.bind(this) })
 	                        )
 	                    ),
@@ -25776,7 +25806,12 @@
 	                        _react2.default.createElement(
 	                            'a',
 	                            { className: 'cart-icon', href: '#', onClick: this.handleCart.bind(this) },
-	                            _react2.default.createElement('img', { className: this.props.cartBounce ? "tada" : " ", src: 'https://res.cloudinary.com/sivadass/image/upload/v1493548928/icons/bag.png', alt: 'Cart' })
+	                            _react2.default.createElement('img', { className: this.props.cartBounce ? "tada" : " ", src: 'https://res.cloudinary.com/sivadass/image/upload/v1493548928/icons/bag.png', alt: 'Cart' }),
+	                            this.props.totalItems ? _react2.default.createElement(
+	                                'span',
+	                                { className: 'cart-count' },
+	                                this.props.totalItems
+	                            ) : ""
 	                        ),
 	                        _react2.default.createElement(
 	                            'div',
