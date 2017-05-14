@@ -4,9 +4,19 @@
     width: 200px;
     border-radius: 2px;
     .product-image{
-        width: 100%;
-        min-height: 200px;
+        overflow: hidden;
         border-radius: 2px 2px 0 0;
+        max-height: 200px;
+        img{
+            cursor:zoom-in;
+            width: 100%;
+            height: auto;
+            transition: transform 300ms ease-in;
+            transform: scale(1);
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
     }
     .product-name{
         font-weight: normal;

@@ -6,6 +6,7 @@ class Product extends Component{
 		super(props);
         this.state = {
             selectedProduct: {},
+            quickViewProdcut: {}
         }
 	}
 
@@ -22,6 +23,18 @@ class Product extends Component{
             this.props.addToCart(this.state.selectedProduct);
         })
     }
+    quickView(image, name, price, id){
+        this.setState({
+            quickViewProdcut: {
+                image: image,
+                name: name,
+                price: price,
+                id: id
+            }
+        }, function(){
+            this.props.openModal(this.state.quickViewProdcut);
+        })
+    }
     render(){
         let image = this.props.image;
         let name = this.props.name;
@@ -30,7 +43,9 @@ class Product extends Component{
         let quantity = this.props.productQuantity;
         return(
             <div className="product">
-                <img className="product-image" src={image} alt={this.props.name}/>
+                <div className="product-image">
+                    <img src={image} alt={this.props.name} onClick={this.quickView.bind(this, image, name, price, id, quantity)}/>
+                </div>
                 <h4 className="product-name">{this.props.name}</h4>
                 <p className="product-price">{this.props.price}</p>
                 <Counter productQuantity={quantity} updateQuantity={this.props.updateQuantity}/>

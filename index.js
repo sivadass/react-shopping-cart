@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Products from './components/Products';
 import Pagination from './components/Pagination';
 import Footer from './components/Footer';
+import QuickView from './components/QuickView';
 
 class App extends Component{
 	constructor(){
@@ -17,7 +18,9 @@ class App extends Component{
 			term: '',
 			category: '',
 			cartBounce: false,
-			quantity : 1
+			quantity : 1,
+			quickViewProduct: {},
+			modalActive: false
 		};
 		this.handleSearch = this.handleSearch.bind(this);
 		this.handleCategory = this.handleCategory.bind(this);
@@ -27,10 +30,12 @@ class App extends Component{
 		this.checkProduct = this.checkProduct.bind(this);
 		this.updateQuantity = this.updateQuantity.bind(this);
 		this.handleRemoveProduct = this.handleRemoveProduct.bind(this);
+		this.openModal = this.openModal.bind(this);
+		this.closeModal = this.closeModal.bind(this);
 	}
 	// Fetch Initial Set of Products from external API
 	getProducts(){
-		let url = "https://api.myjson.com/bins/b1jrd";
+		let url = "http://api.myjson.com/bins/b1jrd";
 		axios.get(url)
 			.then(response => {
 				this.setState({
@@ -124,6 +129,20 @@ class App extends Component{
             quantity: qty
         })
 	}
+	// Open Modal
+	openModal(product){
+		this.setState({
+			quickViewProduct: product,
+			modalActive: true
+		})
+	}
+	// Close Modal
+	closeModal(){
+		this.setState({
+			modalActive: false
+		})
+	}
+
 	render(){
 		return(
 			<div className="container">
@@ -145,9 +164,11 @@ class App extends Component{
 					addToCart={this.handleAddToCart}
 					productQuantity = {this.state.quantity}
 					updateQuantity={this.updateQuantity}
+					openModal={this.openModal}
 				/>
 				<Pagination />
 				<Footer />
+				<QuickView product={this.state.quickViewProduct} openModal={this.state.modalActive} closeModal={this.closeModal} />
 			</div>
 		)
 	}
