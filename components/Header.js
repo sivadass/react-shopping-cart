@@ -46,7 +46,7 @@ class Header extends Component{
                         <p className="product-name">{product.name}</p>
                         <p className="product-price">{product.price}</p>
                     </div>
-                    <Counter productQuantity={product.quantity} updateQuantity={this.props.updateQuantity}/>
+                    
                     <a className="product-remove" href="#" onClick={this.props.removeProduct.bind(this, product.id)}>&times;</a>
                 </li>
 			)
