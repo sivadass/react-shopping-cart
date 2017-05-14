@@ -99,9 +99,7 @@ header{
         }
     }
 }
-
 @media (min-width: 481px){
-    .cart-count,
     .mobile-search,
     .back-button {
         display: none;
@@ -116,20 +114,6 @@ header{
     .back-button{
         display: block;
         margin-right: 8px;
-    }
-    .cart-count{
-        display: block;
-        position: absolute;
-        background: $primary-orange;
-        height: 24px;
-        line-height: 24px;
-        text-align: center;
-        font-size: 12px;
-        color: #fff;
-        width: 24px;
-        border-radius: 50%;
-        top: -6px;
-        right: -9px;
     }
 }
 
@@ -166,6 +150,25 @@ header{
     margin-left: 16px;
     z-index: 99;
     position: relative;
+}
+.cart-count{
+    @media (min-width: 992px){
+        display: none;
+    }
+    @media (max-width: 991px){
+        display: block;
+        position: absolute;
+        background: $primary-orange;
+        height: 24px;
+        line-height: 24px;
+        text-align: center;
+        font-size: 12px;
+        color: #fff;
+        width: 24px;
+        border-radius: 50%;
+        top: -6px;
+        right: -9px;
+    }
 }
 .cart-preview{
     display: none;

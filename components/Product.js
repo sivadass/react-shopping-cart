@@ -6,7 +6,8 @@ class Product extends Component{
 		super(props);
         this.state = {
             selectedProduct: {},
-            quickViewProdcut: {}
+            quickViewProdcut: {},
+            buttonLabel: "ADD TO CART"
         }
 	}
 
@@ -22,6 +23,13 @@ class Product extends Component{
         }, function(){
             this.props.addToCart(this.state.selectedProduct);
         })
+        this.setState({
+            buttonLabel: "✔ ADDED"
+        }, function(){
+            setTimeout(() => {
+                this.setState({ buttonLabel: "ADD TO CART" });
+            }, 5000);
+        });
     }
     quickView(image, name, price, id){
         this.setState({
@@ -50,7 +58,7 @@ class Product extends Component{
                 <p className="product-price">{this.props.price}</p>
                 <Counter productQuantity={quantity} updateQuantity={this.props.updateQuantity}/>
                 <div className="product-action">
-                    <button onClick={this.addToCart.bind(this, image, name, price, id, quantity)}>ADD TO CART</button>
+                    <button type="button" onClick={this.addToCart.bind(this, image, name, price, id, quantity)}>{this.state.buttonLabel}</button>
                 </div>
             </div>
         )
