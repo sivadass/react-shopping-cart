@@ -36,8 +36,12 @@ class App extends Component{
 	}
 	// Fetch Initial Set of Products from external API
 	getProducts(){
-		let url = "https://quarkbackend.com/getfile/sivadass/products";
-		//let url = "products.json";
+		//For Localhost use the below url
+		//const url = "products.json";
+
+		// For Production use the below url
+		const url="https://quarkbackend.com/getfile/sivadass/products";
+
 		axios.get(url)
 			.then(response => {
 				this.setState({
