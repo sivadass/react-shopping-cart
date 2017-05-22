@@ -27,7 +27,7 @@ Now open **index.html** in your browser to view the live page.
 
 * I used localhost of my Wamp server to run this app, you can even use [webpack-dev-server](https://webpack.github.io/docs/webpack-dev-server.html) to  create a handy *http* server or any other of your choice.
 
-* To generate minified **bundle.js**, just stop your already running Webpack by pressing ```CTRL + C``` and enter ```Yes``` in your console. Open **webpack.config.js** and uncomment the line numbers from **24** t0 **33**. Now re-run ```webpack``` command in your console to generate compressed bundle.
+* To generate minified **bundle.js**, just stop your already running Webpack by pressing ```CTRL + C``` and enter ```Yes``` in your console. Open **webpack.config.js** and uncomment the line numbers from **24** to **33**. Now re-run ```webpack``` command in your console to generate compressed bundle.
 
 ![Minification](http://res.cloudinary.com/sivadass/image/upload/v1495422567/screen-shots/minification.png)
 

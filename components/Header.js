@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import CartScrollBar from './CartScrollBar';
 import Counter from './counter';
+import EmptyCart from '../empty-states/EmptyCart';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
 class Header extends Component{
@@ -54,6 +55,12 @@ class Header extends Component{
                 </li>
 			)
 		});
+        let view;
+        if(cartItems.length <= 0){
+			view = <EmptyCart />
+		} else{
+			view = <CSSTransitionGroup transitionName="fadeIn" transitionEnterTimeout={500} transitionLeaveTimeout={300} component="ul" className="cart-items">{cartItems}</CSSTransitionGroup>
+		}
         return(
             <header>
                 <div className="container">
@@ -93,17 +100,10 @@ class Header extends Component{
                         </a>
                         <div className={this.state.showCart ? "cart-preview active" : "cart-preview"}>
                             <CartScrollBar>
-                                <CSSTransitionGroup
-                                    transitionName="fadeIn"
-                                    transitionEnterTimeout={500}
-                                    transitionLeaveTimeout={300} 
-                                    component="ul"
-                                    className="cart-items">
-                                        {cartItems}
-				                </CSSTransitionGroup>
+                                {view}
                             </CartScrollBar>
                             <div className="action-block">
-                                <button type="button">PROCEED TO CHECKOUT</button>
+                                <button type="button" className={this.state.cart.length > 0 ? " " : "disabled"}>PROCEED TO CHECKOUT</button>
                             </div>
                         </div>
                     </div>

@@ -149,7 +149,7 @@ header{
 .cart-icon{
     margin-left: 16px;
     z-index: 99;
-    position: relative;
+    position: relative
 }
 .cart-count{
     @media (min-width: 992px){
@@ -238,6 +238,22 @@ header{
         background: $primary-orange;
         display: block;
         width: 100%;
+        &.disabled{
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+    }
+}
+.empty-cart{
+    text-align: center;
+    img{
+        width: 100%;
+        max-width: 250px;
+        margin: 42px auto 16px auto;
+    }
+    h2{
+        color: $gray-light;
+        font-size: 18px;
     }
 }
 .cart-items{
