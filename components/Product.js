@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Counter from './counter';
+import Counter from './Counter';
 
 class Product extends Component{
 	constructor(props){
