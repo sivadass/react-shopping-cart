@@ -1,35 +1,44 @@
-var path = require('path');
-var webpack = require('webpack');
- 
+const path = require('path');
+const webpack = require('webpack');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
-  entry: './index.js',
-  output: { path: __dirname, filename: 'bundle.js' },
   watch: true,
+  context: path.resolve(__dirname, './src'),
+  entry: {
+    app: './index.js',
+  },
+  output: {
+    path: path.resolve(__dirname, './dist'),
+    filename: '[name].bundle.js',
+  },
+  devtool: 'source-map',
+  resolve: {
+    alias: {
+      moment: 'moment/src/moment'
+    },
+  },
   module: {
-    loaders: [
+    rules: [
       {
-        test: /.jsx?$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-        query: {
-          presets: ['es2015','react','stage-2']
-        }
+        test: /\.jsx?$/,
+        include:[path.resolve(__dirname, 'src')],
+        exclude: [path.resolve(__dirname,"node_modules")],
+        use: "babel-loader"
+      },
+      {
+        test: /\.scss?$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader!sass-loader'
+        })
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: "file-loader"
       }
     ]
   },
-  resolve: {
-      extensions: ['', '.js','.jsx', '.ts']
-  },
-  plugins: [ 
-    new webpack.DefinePlugin({
-      'process.env':{
-        'NODE_ENV': JSON.stringify('production')
-      }
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-        compress: {
-            warnings: false
-        }
-    })
+  plugins: [
+    new ExtractTextPlugin('style.css'),
   ]
 };

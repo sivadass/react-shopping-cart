@@ -2,18 +2,23 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Counter extends Component {
-	state = { value: this.props.productQuantity };
+	constructor(props){
+		super(props)
+		this.state = { value: this.props.productQuantity };
+		this.increment = this.increment.bind(this);
+		this.decrement = this.decrement.bind(this);
+	}
 
-	increment = (e) => {
+	increment(e){
     	this.setState(prevState => ({
       	value: Number(prevState.value) + 1
     	}), function(){
 				this.props.updateQuantity(this.state.value);
 		});
 		e.preventDefault();
-  	};
+  };
 
-	decrement = (e) => {
+	decrement(e){
 		e.preventDefault();
 		if(this.state.value <= 1){
 			return this.state.value;
@@ -27,7 +32,7 @@ class Counter extends Component {
 		}
 	};
 
-	feed = (e) =>{
+	feed(e){
 		this.setState({
 			value: this.refs.feedQty.value
 		}, function(){

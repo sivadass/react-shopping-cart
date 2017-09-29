@@ -6,6 +6,7 @@ import Products from './components/Products';
 import Pagination from './components/Pagination';
 import Footer from './components/Footer';
 import QuickView from './components/QuickView';
+import './scss/style.scss';
 
 class App extends Component{
 	constructor(){
@@ -37,10 +38,10 @@ class App extends Component{
 	// Fetch Initial Set of Products from external API
 	getProducts(){
 		//For Localhost use the below url
-		//const url = "products.json";
+		const url = "src/products.json";
 
 		// For Production use the below url
-		const url="https://quarkbackend.com/getfile/sivadass/products";
+		//const url="https://quarkbackend.com/getfile/sivadass/products";
 
 		axios.get(url)
 			.then(response => {
