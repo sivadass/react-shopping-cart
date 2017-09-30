@@ -153,7 +153,7 @@ class App extends Component{
 			modalActive: false
 		})
 	}
-
+	
 	render(){
 		return(
 			<div className="container">

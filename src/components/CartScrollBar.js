@@ -8,10 +8,8 @@ class CartScrollBar extends Component{
   }
   componentDidMount() {
     window.addEventListener("mouseWheel", this.handleWindowWheel.bind(this), false);
-    console.log("crossed... event")
   }
   componentWillUnmount() {
-    console.log("crossed... 2nd event")
     window.removeEventListener("mouseWheel", this.handleWindowWheel);
   }
   handleWindowWheel(event) {
