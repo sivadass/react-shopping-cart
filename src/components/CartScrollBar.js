@@ -4,21 +4,21 @@ import { Scrollbars } from 'react-custom-scrollbars';
 class CartScrollBar extends Component{
   constructor(props){
     super(props);
-    //this.handleWindowWheel = this.handleWindowWheel.bind(this); 
+    this.handleScroll = this.handleScroll.bind(this);
   }
   componentDidMount() {
-    window.addEventListener("mouseWheel", this.handleWindowWheel.bind(this), false);
+    window.addEventListener('scroll', this.handleScroll);
   }
-  componentWillUnmount() {
-    window.removeEventListener("mouseWheel", this.handleWindowWheel);
+  componentWillUnmount(){
+    window.removeEventListener('scroll', this.handleScroll);
   }
-  handleWindowWheel(event) {
-    console.log("hey ....")
-    //const { top } = this.refs.scrollbars.getValues(); 
-    //console.log(top);
-    // When the bottom is reached and we're scrolling down, prevent scrolling of the window
-    //if (top >= 1 && event.deltaY > 0) event.preventDefault();
-    //alert("hello");
+  handleScroll(event) {
+    const positions = this.refs.scrollbars.getValues();
+    //When the bottom is reached and we're scrolling down, prevent scrolling of the window
+    if (positions.top >= 1){
+      console.log("Reached scroll end!");
+      event.stopPropagation();
+    }
   }
   render(){
     return(

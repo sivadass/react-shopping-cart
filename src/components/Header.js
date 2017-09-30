@@ -3,6 +3,7 @@ import CartScrollBar from './CartScrollBar';
 import Counter from './Counter';
 import EmptyCart from '../empty-states/EmptyCart';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+import {findDOMNode} from 'react-dom';
 
 class Header extends Component{
     constructor(props){
@@ -36,6 +37,24 @@ class Header extends Component{
             this.refs.searchBox.value = "";
             this.props.handleMobileSearch();
         })
+    }
+    handleClickOutside(event) {
+        const cartNode = findDOMNode(this.refs.cartPreview);
+        const buttonNode = findDOMNode(this.refs.cartButton);
+        if(cartNode.classList.contains('active')){
+            if (!cartNode || !cartNode.contains(event.target)){
+                this.setState({
+                    showCart: false
+                })
+                event.stopPropagation();
+            }
+        } 
+    }
+    componentDidMount() {
+      document.addEventListener('click', this.handleClickOutside.bind(this), true);
+    }
+    componentWillUnmount() {
+      document.removeEventListener('click', this.handleClickOutside.bind(this), true);
     }
     render(){
         let cartItems;
@@ -94,11 +113,11 @@ class Header extends Component{
                                 </tbody>
                             </table>
                         </div>
-                        <a className="cart-icon" href="#" onClick={this.handleCart.bind(this)}>
+                        <a className="cart-icon" href="#" onClick={this.handleCart.bind(this)} ref="cartButton">
                             <img className={this.props.cartBounce ? "tada" : " "} src="https://res.cloudinary.com/sivadass/image/upload/v1493548928/icons/bag.png" alt="Cart"/>
                             {this.props.totalItems ? <span className="cart-count">{this.props.totalItems}</span> : "" }
                         </a>
-                        <div className={this.state.showCart ? "cart-preview active" : "cart-preview"}>
+                        <div className={this.state.showCart ? "cart-preview active" : "cart-preview"} ref="cartPreview">
                             <CartScrollBar>
                                 {view}
                             </CartScrollBar>

@@ -5,7 +5,7 @@ class QuickView extends Component{
 	constructor(props){
 		super(props);
 	}
-    componentDidMount() {
+  componentDidMount() {
 		document.addEventListener('click', this.handleClickOutside.bind(this), true);
 	}
 
