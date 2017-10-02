@@ -5,5 +5,8 @@
 # Node Modules
 node_modules/
 
+# JS Mapping files
+*.js.map
+
 # Misc
 .DS_Store
