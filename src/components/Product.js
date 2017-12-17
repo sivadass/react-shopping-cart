@@ -7,10 +7,12 @@ class Product extends Component{
         this.state = {
             selectedProduct: {},
             quickViewProdcut: {},
-            buttonLabel: "ADD TO CART"
+            buttonLabel: "ADD TO CART",
         }
-	}
+    }
+    resetQuantity(){
 
+    }
     addToCart(image, name, price, id, quantity){
         this.setState({
             selectedProduct: {
@@ -27,7 +29,10 @@ class Product extends Component{
             buttonLabel: "✔ ADDED"
         }, function(){
             setTimeout(() => {
-                this.setState({ buttonLabel: "ADD TO CART" });
+                this.setState({ 
+                    buttonLabel: "ADD TO CART",
+                    selectedProduct: {} 
+                });
             }, 5000);
         });
     }
@@ -56,7 +61,7 @@ class Product extends Component{
                 </div>
                 <h4 className="product-name">{this.props.name}</h4>
                 <p className="product-price">{this.props.price}</p>
-                <Counter productQuantity={quantity} updateQuantity={this.props.updateQuantity}/>
+                <Counter productQuantity={quantity} updateQuantity={this.props.updateQuantity} resetQuantity={this.resetQuantity}/>
                 <div className="product-action">
                     <button type="button" onClick={this.addToCart.bind(this, image, name, price, id, quantity)}>{this.state.buttonLabel}</button>
                 </div>

@@ -73,6 +73,7 @@ class App extends Component{
 		let productID = selectedProducts.id;
 		let productQty = selectedProducts.quantity;
 		if(this.checkProduct(productID)){
+			console.log('hi');
 			let index = cartItem.findIndex((x => x.id == productID));
 			cartItem[index].quantity = Number(cartItem[index].quantity) + Number(productQty);
 			this.setState({
@@ -86,8 +87,13 @@ class App extends Component{
 			cartBounce: true,
 		});
 		setTimeout(function(){
-             this.setState({cartBounce:false});
-        }.bind(this),1000);  
+			this.setState({
+				cartBounce:false,
+				quantity: 1
+			});
+			console.log(this.state.quantity);
+			console.log(this.state.cart);
+    }.bind(this),1000);  
 		this.sumTotalItems(this.state.cart);
 		this.sumTotalAmount(this.state.cart);
 	}
@@ -126,19 +132,13 @@ class App extends Component{
 			totalAmount: total
 		})
     }
-	//Update Quantity
-	updateQuantity(qty){
-		console.log("hola!")
-        this.setState({
-            moq: qty
-        })
-	}
+
 	//Reset Quantity
 	updateQuantity(qty){
-		console.log("hola!")
-        this.setState({
-            quantity: qty
-        })
+		console.log("quantity added...")
+		this.setState({
+				quantity: qty
+		})
 	}
 	// Open Modal
 	openModal(product){
