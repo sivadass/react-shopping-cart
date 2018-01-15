@@ -23,6 +23,9 @@ class Header extends Component{
     handleSubmit(e){
         e.preventDefault();
     }
+    submitCart(){
+        alert(JSON.stringify(this.state.cart, null, 2));
+    }
     handleMobileSearch(e){
         e.preventDefault();
         this.setState({
@@ -58,6 +61,7 @@ class Header extends Component{
     }
     render(){
         let cartItems;
+        console.log(this.state.cart);
         cartItems = this.state.cart.map(product =>{
 			return(
 				<li className="cart-item" key={product.name}>
@@ -67,6 +71,7 @@ class Header extends Component{
                         <p className="product-price">{product.price}</p>
                     </div>
                     <div className="product-total">
+                        <Counter productQuantity={product.quantity} updateQuantity={this.props.updateQuantity} />
                         <p className="quantity">{product.quantity} {product.quantity > 1 ?"Nos." : "No." } </p>
                         <p className="amount">{product.quantity * product.price}</p>
                     </div>
@@ -122,7 +127,7 @@ class Header extends Component{
                                 {view}
                             </CartScrollBar>
                             <div className="action-block">
-                                <button type="button" className={this.state.cart.length > 0 ? " " : "disabled"}>PROCEED TO CHECKOUT</button>
+                                <button type="button" className={this.state.cart.length > 0 ? " " : "disabled"} onClick={this.submitCart.bind(this)}>PROCEED TO CHECKOUT</button>
                             </div>
                         </div>
                     </div>

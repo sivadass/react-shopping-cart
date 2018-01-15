@@ -73,7 +73,6 @@ class App extends Component{
 		let productID = selectedProducts.id;
 		let productQty = selectedProducts.quantity;
 		if(this.checkProduct(productID)){
-			console.log('hi');
 			let index = cartItem.findIndex((x => x.id == productID));
 			cartItem[index].quantity = Number(cartItem[index].quantity) + Number(productQty);
 			this.setState({
