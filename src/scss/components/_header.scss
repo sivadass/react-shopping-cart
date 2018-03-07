@@ -281,7 +281,7 @@ header{
             color: $gray-light;
             font-weight: 700;
             &:before{
-                content: "Rs. "
+                content: "₹ "
             }
         }
     }
@@ -297,7 +297,7 @@ header{
             font-weight: 700;
             text-align: right;
             &:before{
-                content: "Rs. "
+                content: "₹ "
             }
         }
         
