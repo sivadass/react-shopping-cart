@@ -46,6 +46,10 @@
         padding: 16px;
         button{
             width: 100%;
+            transition: all 300ms ease-in;
+            &.added{
+                background: $primary-orange;
+            }
         }
     }
     &:hover{
