@@ -33,7 +33,7 @@ class Product extends Component{
                     isAdded: false,
                     selectedProduct: {} 
                 });
-            }, 3750);
+            }, 3500);
         });
     }
     quickView(image, name, price, id){
