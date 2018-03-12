@@ -10,9 +10,6 @@ class Product extends Component{
             isAdded: false
         }
     }
-    resetQuantity(){
-
-    }
     addToCart(image, name, price, id, quantity){
         this.setState({
             selectedProduct: {
