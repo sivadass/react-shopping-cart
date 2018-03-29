@@ -19,6 +19,7 @@
     "react": "^16.0.0",
     "react-custom-scrollbars": "^4.1.1",
     "react-dom": "^16.0.0",
+    "react-paypal-express-checkout": "^1.0.4",
     "react-transition-group": "^1.1.2"
   },
   "devDependencies": {
