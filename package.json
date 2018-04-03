@@ -4,7 +4,8 @@
   "description": "simple react shopping cart without using redux",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack -d --watch",
+    "prod": "webpack -p --watch"
   },
   "keywords": [
     "reactjs",
