@@ -36,5 +36,3 @@ And finally open http://localhost:5600.
 * You may get **CORS** error, when running this app in your local machine. Open index.js and use **products.json** as url.
 
 ![CORS Error](https://res.cloudinary.com/sivadass/image/upload/v1495422162/screen-shots/url.png)
-
-* I used localhost of my Wamp server to run this app, you can even use [webpack-dev-server](https://webpack.github.io/docs/webpack-dev-server.html) to  create a handy *http* server or any other of your choice.
