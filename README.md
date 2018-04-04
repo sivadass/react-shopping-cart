@@ -15,22 +15,18 @@ Goto the project folder and install required dependencies:
 npm install
 ```
 
-Run Webpack to watch for code changes and bundle js and scss files:
-```bash
-# for development build
-npm run dev
-
-# for production build
-npm run prod
+And run Webpack to watch for code changes and bundle js and scss files:
+```
+webpack
 ```
 
-Now run the express server
-```bash
-npm start
+For production build:
+
+```
+webpack -p
 ```
 
-And finally open http://localhost:5600.
-
+Now open **index.html** in your browser to view the live page.
 
 ### Additional Info
 * You may get **CORS** error, when running this app in your local machine. Open index.js and use **products.json** as url.
