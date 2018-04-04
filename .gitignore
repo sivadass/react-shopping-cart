@@ -5,9 +5,6 @@
 # Node Modules
 node_modules/
 
-# VSCode configurations
-.vscode
-
 # JS Mapping files
 *.js.map
 

@@ -2,11 +2,9 @@
   "name": "react-shopping-cart",
   "version": "0.0.1",
   "description": "simple react shopping cart without using redux",
-  "main": "app.js",
+  "main": "main.js",
   "scripts": {
-    "start": "./node_modules/.bin/nodemon app.js",
-    "dev": "webpack -d --watch",
-    "prod": "webpack -p --watch"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "reactjs",
@@ -17,14 +15,11 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.16.1",
-    "express": "^4.16.3",
-    "handy-log": "^1.0.3",
     "prop-types": "^15.5.10",
     "react": "^16.0.0",
     "react-custom-scrollbars": "^4.1.1",
     "react-dom": "^16.0.0",
-    "react-transition-group": "^1.1.2",
-    "serve-favicon": "^2.5.0"
+    "react-transition-group": "^1.1.2"
   },
   "devDependencies": {
     "babel-core": "^6.10.4",
@@ -36,7 +31,6 @@
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "node-sass": "^4.5.3",
-    "nodemon": "^1.17.3",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "webpack": "^3.6.0"
