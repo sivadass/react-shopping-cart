@@ -36,7 +36,8 @@ class App extends Component {
   }
   // Fetch Initial Set of Products from external API
   getProducts() {
-    let url = "products.json";
+    let url =
+      "https://res.cloudinary.com/sivadass/raw/upload/v1535817394/json/products.json";
     axios.get(url).then(response => {
       this.setState({
         products: response.data

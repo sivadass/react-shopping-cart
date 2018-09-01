@@ -9,16 +9,16 @@ module.exports = merge.smart(webpackCommon, {
   output: {
     publicPath: "/", // deploy on server with /app/ folder name
     filename: "[name].bundle.js",
-    path: path.resolve(__dirname, "../dist")
+    path: path.resolve(__dirname, "../docs")
   },
   devServer: {
     hot: true,
     open: true,
     historyApiFallback: true,
     overlay: true,
-    contentBase: path.join(__dirname, "dist"),
+    contentBase: path.join(__dirname, "docs"),
     host: "localhost",
-    port: 8012,
+    port: 8015,
     publicPath: "/"
   },
   devtool: "cheap-eval-source-map",
