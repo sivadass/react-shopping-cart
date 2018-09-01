@@ -31,3 +31,8 @@ For production build:
 ```
 npm run build
 ```
+
+### Buy me a Coffee
+
+If you like to support this project, you can use the paypal link below:
+[![Buy Me a Coffee](https://res.cloudinary.com/sivadass/image/upload/v1535827506/icons/buy-me-a-coffee.png)](https://www.paypal.me/nsivadass)
