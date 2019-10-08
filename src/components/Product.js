@@ -6,7 +6,7 @@ class Product extends Component {
     super(props);
     this.state = {
       selectedProduct: {},
-      quickViewProdcut: {},
+      quickViewProduct: {},
       isAdded: false
     };
   }
@@ -42,7 +42,7 @@ class Product extends Component {
   quickView(image, name, price, id) {
     this.setState(
       {
-        quickViewProdcut: {
+        quickViewProduct: {
           image: image,
           name: name,
           price: price,
