@@ -50,7 +50,7 @@ class Product extends Component {
         }
       },
       function() {
-        this.props.openModal(this.state.quickViewProdcut);
+        this.props.openModal(this.state.quickViewProduct);
       }
     );
   }
