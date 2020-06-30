@@ -9,6 +9,7 @@ class Product extends Component {
       quickViewProduct: {},
       isAdded: false
     };
+    this.child = React.createRef();
   }
   addToCart(image, name, price, id, quantity) {
     this.setState(
@@ -38,6 +39,7 @@ class Product extends Component {
         }, 3500);
       }
     );
+    this.child.current.resetQuantity();
   }
   quickView(image, name, price, id) {
     this.setState(
@@ -82,6 +84,7 @@ class Product extends Component {
           productQuantity={quantity}
           updateQuantity={this.props.updateQuantity}
           resetQuantity={this.resetQuantity}
+          ref={this.child}
         />
         <div className="product-action">
           <button
