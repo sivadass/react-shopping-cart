@@ -15,7 +15,7 @@
   "author": "Sivadass",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.16.1",
+    "axios": "^0.21.1",
     "prop-types": "^15.5.10",
     "react": "^16.0.0",
     "react-custom-scrollbars": "^4.1.1",
