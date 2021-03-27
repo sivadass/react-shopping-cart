@@ -260,6 +260,7 @@ header {
 }
 .cart-items {
   height: 320px;
+  overflow-y: auto;
   width: 360px;
 }
 .cart-item {
@@ -310,7 +311,9 @@ header {
     width: 24px;
     font-size: 22px;
     color: $gray-eighty;
+    background-color: $white;
     text-align: center;
+    padding: 0;
     &:hover {
       color: $red;
     }

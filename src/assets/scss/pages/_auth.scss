@@ -1,0 +1,26 @@
+.auth-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $gray-light-bg;
+  min-height: 100vh;
+  .wrapper {
+    min-width: 320px;
+    text-align: center;
+    padding: 32px;
+    border-radius: 16px;
+    background: $white;
+  }
+}
+.auth-brand {
+  margin-bottom: 24px;
+  img {
+    max-width: 120px;
+  }
+}
+.auth-button {
+  width: 100%;
+  border-radius: 8px;
+  height: 48px;
+  margin: 24px 0;
+}

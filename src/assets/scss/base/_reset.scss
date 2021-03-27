@@ -45,6 +45,7 @@ strong {
 }
 a {
   text-decoration: none;
+  color: $primary-green;
 }
 h1,
 h2,
@@ -78,6 +79,10 @@ button {
   }
   &:active {
     background: lighten($primary-green, 15%);
+  }
+  &.block {
+    display: block;
+    width: 100%;
   }
 }
 

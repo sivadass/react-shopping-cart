@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import classNames from "classnames";
+import { Link } from "react-router-dom";
 import {
   CartStateContext,
   CartDispatchContext,
@@ -30,11 +31,13 @@ const Header = (props) => {
     <header>
       <div className="container">
         <div className="brand">
-          <img
-            className="logo"
-            src="https://res.cloudinary.com/sivadass/image/upload/v1493547373/dummy-logo/Veggy.png"
-            alt="Veggy Brand Logo"
-          />
+          <Link to="/">
+            <img
+              className="logo"
+              src="https://res.cloudinary.com/sivadass/image/upload/v1493547373/dummy-logo/Veggy.png"
+              alt="Veggy Brand Logo"
+            />
+          </Link>
         </div>
 
         <div className="search">
@@ -106,14 +109,7 @@ const Header = (props) => {
               ""
             )}
           </a>
-          <div className={classNames("cart-preview", { active: isCartOpen })}>
-            <CartPreview />
-            <div className="action-block">
-              <button type="button" className={"disabled"}>
-                PROCEED TO CHECKOUT
-              </button>
-            </div>
-          </div>
+          <CartPreview />
         </div>
       </div>
     </header>
