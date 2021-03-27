@@ -1,0 +1,357 @@
+header {
+  background: $white;
+  padding: 30px 32px;
+  box-shadow: 0px 8px 18px rgba(0, 0, 0, 0.033);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  animation: slideUp 300ms linear;
+  .container {
+    display: flex;
+    display: -webkit-flex;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  @media (max-width: 991px) {
+    padding: 16px;
+    .container {
+      padding: 0;
+    }
+  }
+  @media (max-width: 480px) {
+    padding: 8px 12px;
+  }
+}
+@keyframes slideUp {
+  0% {
+    transform: translateY(30px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+// Logo
+.brand .logo {
+  width: 123px;
+  @media (max-width: 480px) {
+    width: 102px;
+    margin: 2px 0;
+  }
+}
+
+// Search Box
+.search {
+  margin-left: 64px;
+  flex-grow: 1;
+  -webkit-flex-grow: 1;
+  @media (max-width: 767px) {
+    margin-left: 32px;
+  }
+  @media (max-width: 480px) {
+    flex-grow: initial;
+    -webkit-flex-grow: initial;
+    margin-left: auto;
+  }
+}
+.search-form {
+  display: flex;
+  display: -webkit-flex;
+  @media (max-width: 480px) {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 8px;
+    background: #fff;
+    z-index: 100;
+    &.active {
+      display: flex;
+      display: -webkit-flex;
+    }
+  }
+  .search-keyword {
+    height: 36px;
+    border: 1px solid $primary-green;
+    padding: 0 16px;
+    border-radius: 2px 0 0 2px;
+    width: 100%;
+    max-width: 330px;
+    &:focus {
+      outline: none;
+    }
+    @media (max-width: 480px) {
+      height: 32px;
+      margin: 2px 0;
+    }
+  }
+  .search-button {
+    border-radius: 0 2px 2px 0;
+    background: $primary-green
+      url(https://res.cloudinary.com/sivadass/image/upload/v1494692031/icons/search.png)
+      center no-repeat;
+    width: 96px;
+    @media (max-width: 480px) {
+      height: 32px;
+      margin: 2px 0;
+    }
+  }
+}
+@media (min-width: 481px) {
+  .mobile-search,
+  .back-button {
+    display: none;
+  }
+}
+@media (max-width: 480px) {
+  .mobile-search {
+    display: block;
+    height: 36px;
+    width: 36px;
+  }
+  .back-button {
+    display: block;
+    margin-right: 8px;
+  }
+}
+
+// Cart
+.cart {
+  display: flex;
+  display: -webkit-flex;
+  margin-left: 64px;
+  position: relative;
+  z-index: 99;
+  @media (max-width: 991px) {
+    margin-left: 16px;
+  }
+}
+.cart-info {
+  @media (max-width: 991px) {
+    display: none;
+  }
+}
+.cart-info table {
+  font-size: 14px;
+  color: $primary-green;
+  text-align: right;
+  tr {
+    padding: 0;
+    margin: 0;
+  }
+  td {
+    padding: 0 4px;
+    line-height: 16px;
+  }
+}
+.cart-icon {
+  margin-left: 16px;
+  z-index: 99;
+  position: relative;
+}
+.cart-count {
+  @media (min-width: 992px) {
+    display: none;
+  }
+  @media (max-width: 991px) {
+    display: block;
+    position: absolute;
+    background: $primary-orange;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    font-size: 12px;
+    color: #fff;
+    width: 24px;
+    border-radius: 50%;
+    top: -6px;
+    right: -9px;
+  }
+}
+.cart-preview {
+  display: none;
+  background: $white;
+  border: 1px solid $gray-eighty;
+  &:before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: -9px;
+    right: 8px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid $gray-eighty;
+    z-index: 1;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    display: block;
+    top: -7px;
+    right: 9px;
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid $white;
+    z-index: 1;
+  }
+}
+.cart-preview.active {
+  z-index: 99;
+  display: block;
+  position: absolute;
+  top: 48px;
+  right: 0;
+  width: 360px;
+  height: 388px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  @media (max-width: 400px) {
+    top: 45px;
+    width: 100%;
+    min-width: 300px;
+    & > div {
+      width: 100% !important;
+    }
+    .cart-items {
+      width: 100%;
+    }
+    .stepper-input {
+      a {
+        display: none;
+      }
+    }
+  }
+}
+
+.action-block {
+  background: $white;
+  position: absolute;
+  bottom: 0;
+  padding: 16px;
+  width: 100%;
+  button {
+    background: $primary-orange;
+    display: block;
+    width: 100%;
+    &.disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+  }
+}
+.empty-cart {
+  text-align: center;
+  img {
+    width: 100%;
+    max-width: 250px;
+    margin: 42px auto 16px auto;
+  }
+  h2 {
+    color: $gray-light;
+    font-size: 18px;
+  }
+}
+.cart-items {
+  height: 320px;
+  width: 360px;
+}
+.cart-item {
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-align-items: center;
+  padding: 8px;
+  .product-image {
+    width: 48px;
+    height: 48px;
+  }
+  .product-info {
+    margin-left: 16px;
+    flex-grow: 1;
+    .product-name {
+      color: $gray-light;
+      font-size: 14px;
+    }
+    .product-price {
+      color: $gray-light;
+      font-weight: 700;
+      &:before {
+        content: "₹ ";
+      }
+    }
+  }
+  .product-total {
+    margin-left: 16px;
+    .quantity {
+      color: $gray-light;
+      font-size: 14px;
+      text-align: right;
+    }
+    .amount {
+      color: $gray-dark;
+      font-weight: 700;
+      text-align: right;
+      &:before {
+        content: "₹ ";
+      }
+    }
+  }
+  .product-remove {
+    margin-left: 24px;
+    height: 24px;
+    line-height: 24px;
+    width: 24px;
+    font-size: 22px;
+    color: $gray-eighty;
+    text-align: center;
+    &:hover {
+      color: $red;
+    }
+  }
+  &:hover {
+    background: $green-light-bg;
+  }
+}
+
+@keyframes tada {
+  from {
+    transform: scale3d(1, 1, 1);
+    opacity: 0;
+  }
+
+  10%,
+  20% {
+    transform: scale3d(0.8, 0.66, 0.66) rotate3d(0, 0, 1, -3deg);
+  }
+
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: scale3d(1.2, 1.2, 1.2) rotate3d(0, 0, 1, 3deg);
+  }
+
+  40%,
+  60%,
+  80% {
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
+  }
+}
+
+.tada {
+  animation-name: tada;
+  animation-duration: 300ms;
+  animation-fill-mode: both;
+}

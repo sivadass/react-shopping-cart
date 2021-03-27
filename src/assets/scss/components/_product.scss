@@ -1,0 +1,102 @@
+.product {
+  background: $white;
+  margin: 16px;
+  width: 200px;
+  border-radius: 2px;
+  .product-image {
+    overflow: hidden;
+    border-radius: 2px 2px 0 0;
+    max-height: 200px;
+    img {
+      cursor: zoom-in;
+      width: 100%;
+      height: auto;
+      transition: transform 300ms ease-in;
+      transform: scale(1);
+      @media (min-width: 991px) {
+        min-height: 200px;
+      }
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+  .product-name {
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 8px;
+  }
+  .product-price {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 22px;
+    margin-bottom: 16px;
+    &:before {
+      content: "₹ ";
+    }
+  }
+  .product-name,
+  .product-price {
+    color: $gray-medium;
+    padding: 0 16px;
+    text-align: center;
+  }
+  .product-action {
+    padding: 16px;
+    button {
+      width: 100%;
+      transition: all 300ms ease-in;
+      &.added {
+        background: $primary-orange;
+      }
+    }
+  }
+  &:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  }
+}
+
+.stepper-input {
+  display: flex;
+  display: -webkit-flex;
+  color: $gray-medium;
+  max-width: 120px;
+  margin: 0 auto;
+  .increment,
+  .decrement {
+    height: 24px;
+    width: 24px;
+    border: 1px solid $gray-eighty;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 50%;
+    text-decoration: none;
+    color: inherit;
+    font-size: 24px;
+    line-height: 22px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    &:hover {
+      color: $primary-green;
+      border-color: $primary-green;
+    }
+    &:active {
+      color: $white;
+      border-color: $primary-green;
+      background: lighten($primary-green, 15%);
+    }
+  }
+  .quantity {
+    height: 24px;
+    width: 48px;
+    text-align: center;
+    margin: 0 12px;
+    border-radius: 2px;
+    border: 1px solid $gray-eighty;
+    &:focus {
+      outline: none;
+      border-color: $primary-green;
+    }
+  }
+}

@@ -1,0 +1,92 @@
+html,
+body,
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: Roboto;
+  font-size: 16px;
+  color: $gray-dark;
+  background: $gray-light-bg;
+}
+* {
+  box-sizing: border-box;
+}
+::selection {
+  background: $primary-green;
+  color: $white;
+}
+::-moz-selection {
+  background: $primary-green;
+  color: $white;
+  text-shadow: none;
+}
+// Number Input Styles
+input[type="number"] {
+  -moz-appearance: textfield;
+  margin: 0;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+// Searchbox Styles
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+}
+strong {
+  font-weight: 700;
+}
+a {
+  text-decoration: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+ul {
+  list-style: none;
+}
+button {
+  height: 36px;
+  border-radius: 2px;
+  text-align: center;
+  color: $white;
+  background: $primary-green;
+  border: 0;
+  font-weight: 400;
+  padding: 0 16px;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  &:hover {
+    background: lighten($primary-green, 10%);
+  }
+  &:focus {
+    outline: none;
+  }
+  &:active {
+    background: lighten($primary-green, 15%);
+  }
+}
+
+input,
+select {
+  font-size: inherit;
+  font-family: inherit;
+}
+
+form {
+  margin: 0;
+}
