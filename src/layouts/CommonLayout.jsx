@@ -4,7 +4,7 @@ import Footer from "components/Footer";
 
 const CommonLayout = ({ children }) => {
   return (
-    <div className="common-layout">
+    <div className="container common-layout">
       <Header />
       <main>{children}</main>
       <Footer />

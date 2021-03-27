@@ -1,7 +1,8 @@
 import React, { useReducer, createContext } from "react";
 
 const initialState = {
-  isSearchBarOpen: false
+  isSearchBarOpen: false,
+  searchKeyword: ""
 };
 
 export const CommonStateContext = createContext();
@@ -14,15 +15,14 @@ const reducer = (state, action) => {
         ...state,
         isSearchBarOpen: !state.isSearchBarOpen
       };
+    case "SET_SEARCH_KEYWORD":
+      return {
+        ...state,
+        searchKeyword: action.payload.searchKeyword
+      };
     default:
       throw new Error(`Unknown action: ${action.type}`);
   }
-};
-
-export const toggleSearchBar = (dispatch) => {
-  return dispatch({
-    type: "TOGGLE_SEARCH_BAR"
-  });
 };
 
 const CommonProvider = ({ children }) => {
@@ -34,6 +34,21 @@ const CommonProvider = ({ children }) => {
       </CommonStateContext.Provider>
     </CommonDispatchContext.Provider>
   );
+};
+
+export const toggleSearchBar = (dispatch) => {
+  return dispatch({
+    type: "TOGGLE_SEARCH_BAR"
+  });
+};
+
+export const setSearchKeyword = (dispatch, searchKeyword) => {
+  return dispatch({
+    type: "SET_SEARCH_KEYWORD",
+    payload: {
+      searchKeyword: searchKeyword
+    }
+  });
 };
 
 export default CommonProvider;

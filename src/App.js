@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import AuthProvider from "contexts/auth";
 import CommonProvider from "contexts/common";
+import ProductsProvider from "contexts/products";
 import CartProvider from "contexts/cart";
 import RouteWrapper from "layouts/RouteWrapper";
 import AuthLayout from "layouts/AuthLayout";
@@ -15,29 +16,31 @@ const App = () => {
   return (
     <AuthProvider>
       <CommonProvider>
-        <CartProvider>
-          <Router>
-            <Switch>
-              <RouteWrapper
-                path="/"
-                exact
-                component={HomePage}
-                layout={CommonLayout}
-              />
-              <RouteWrapper
-                path="/checkout"
-                component={CheckoutPage}
-                layout={CommonLayout}
-                isPrivate
-              />
-              <RouteWrapper
-                path="/auth"
-                component={AuthPage}
-                layout={AuthLayout}
-              />
-            </Switch>
-          </Router>
-        </CartProvider>
+        <ProductsProvider>
+          <CartProvider>
+            <Router>
+              <Switch>
+                <RouteWrapper
+                  path="/"
+                  exact
+                  component={HomePage}
+                  layout={CommonLayout}
+                />
+                <RouteWrapper
+                  path="/checkout"
+                  component={CheckoutPage}
+                  layout={CommonLayout}
+                  isPrivate
+                />
+                <RouteWrapper
+                  path="/auth"
+                  component={AuthPage}
+                  layout={AuthLayout}
+                />
+              </Switch>
+            </Router>
+          </CartProvider>
+        </ProductsProvider>
       </CommonProvider>
     </AuthProvider>
   );

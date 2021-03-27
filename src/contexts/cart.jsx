@@ -16,9 +16,26 @@ const reducer = (state, action) => {
         isCartOpen: !state.isCartOpen
       };
     case "ADD_TO_CART":
+      const id = action.payload.cartItem.id;
+      const isOld = state.items.map((item) => item.id).includes(id);
+      let cartItems = null;
+      if (isOld) {
+        const items = state.items.map((item) => {
+          if (item.id === id) {
+            return {
+              ...item,
+              quantity: item.quantity + 1
+            };
+          }
+          return item;
+        });
+        cartItems = [...items];
+      } else {
+        cartItems = [...state.items, action.payload.cartItem];
+      }
       return {
         ...state,
-        items: [...state.items, action.payload.cartItem]
+        items: cartItems
       };
     case "REMOVE_FROM_CART":
       return {
