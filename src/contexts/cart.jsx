@@ -1,4 +1,5 @@
-import React, { useReducer, createContext } from "react";
+import React, { useReducer, createContext, useEffect } from "react";
+import useLocalStorage from "hooks/useLocalStorage";
 
 const initialState = {
   isCartOpen: false,
@@ -85,7 +86,18 @@ export const clearCart = (dispatch) => {
 };
 
 const CartProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [persistedCartItems, setPersistedCartItems] = useLocalStorage(
+    "cartItems",
+    []
+  );
+  const persistedCartState = {
+    isCartOpen: false,
+    items: persistedCartItems || []
+  };
+  const [state, dispatch] = useReducer(reducer, persistedCartState);
+  useEffect(() => {
+    setPersistedCartItems(state.items);
+  }, [JSON.stringify(state.items)]);
   return (
     <CartDispatchContext.Provider value={dispatch}>
       <CartStateContext.Provider value={state}>

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Formik, Form, Field } from "formik";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import * as Yup from "yup";
 import _get from "lodash.get";
 import { AuthDispatchContext, signIn } from "contexts/auth";
@@ -14,7 +14,9 @@ const LoginSchema = Yup.object().shape({
 const AuthPage = () => {
   const authDispatch = useContext(AuthDispatchContext);
   const history = useHistory();
-
+  const location = useLocation();
+  const fromUrl = _get(location, "state.from.pathname");
+  console.log("location => ", location);
   const goToForgotPassword = (e) => {
     e.preventDefault();
   };
@@ -25,7 +27,11 @@ const AuthPage = () => {
 
   const signInSuccess = (userData) => {
     signIn(authDispatch, userData);
-    history.push("/");
+    if (fromUrl) {
+      history.push(fromUrl);
+    } else {
+      history.push("/");
+    }
   };
 
   return (

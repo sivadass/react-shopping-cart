@@ -1,4 +1,6 @@
-import React, { useReducer, createContext } from "react";
+import React, { useReducer, createContext, useEffect } from "react";
+import _get from "lodash.get";
+import useLocalStorage from "hooks/useLocalStorage";
 
 const initialState = {
   isLoggedIn: false,
@@ -60,7 +62,18 @@ export const signOut = (dispatch) => {
 };
 
 const AuthProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [persistedUser, setPersistedUser] = useLocalStorage("user", null);
+  const persistedUserState = {
+    ...initialState,
+    user: persistedUser,
+    isLoggedIn: _get(persistedUser, "username", "").length > 0
+  };
+  const [state, dispatch] = useReducer(reducer, persistedUserState);
+
+  useEffect(() => {
+    setPersistedUser(state.user);
+  }, [state.isLoggedIn]);
+
   return (
     <AuthDispatchContext.Provider value={dispatch}>
       <AuthStateContext.Provider value={state}>
