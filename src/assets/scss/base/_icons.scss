@@ -1,0 +1,101 @@
+@font-face {
+  font-family: "rsc";
+  src: url("../../fonts/rsc/fonts/rsc.ttf?fxihkr") format("truetype"),
+    url("../../fonts/rsc/fonts/rsc.woff?fxihkr") format("woff"),
+    url("../../fonts/rsc/fonts/rsc.svg?fxihkr#rsc") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="rsc-icon-"],
+[class*=" rsc-icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "rsc" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.rsc-icon-error:before {
+  content: "\e900";
+}
+.rsc-icon-warning:before {
+  content: "\e901";
+}
+.rsc-icon-call:before {
+  content: "\e902";
+}
+.rsc-icon-add_circle:before {
+  content: "\e903";
+}
+.rsc-icon-add_circle_outline:before {
+  content: "\e904";
+}
+.rsc-icon-clear:before {
+  content: "\e905";
+}
+.rsc-icon-drafts:before {
+  content: "\e906";
+}
+.rsc-icon-remove_circle:before {
+  content: "\e907";
+}
+.rsc-icon-remove_circle_outline:before {
+  content: "\e908";
+}
+.rsc-icon-local_grocery_store:before {
+  content: "\e909";
+}
+.rsc-icon-arrow_back:before {
+  content: "\e90a";
+}
+.rsc-icon-arrow_forward:before {
+  content: "\e90b";
+}
+.rsc-icon-keyboard_control:before {
+  content: "\e90c";
+}
+.rsc-icon-more_vert:before {
+  content: "\e90d";
+}
+.rsc-icon-arrow_back_ios:before {
+  content: "\e90e";
+}
+.rsc-icon-arrow_forward_ios:before {
+  content: "\e90f";
+}
+.rsc-icon-check_box:before {
+  content: "\e910";
+}
+.rsc-icon-check_box_outline_blank:before {
+  content: "\e911";
+}
+.rsc-icon-star:before {
+  content: "\e912";
+}
+.rsc-icon-star_half:before {
+  content: "\e913";
+}
+.rsc-icon-star_outline:before {
+  content: "\e914";
+}
+.rsc-icon-account_circle:before {
+  content: "\e915";
+}
+.rsc-icon-check_circle:before {
+  content: "\e916";
+}
+.rsc-icon-delete:before {
+  content: "\e917";
+}
+.rsc-icon-search:before {
+  content: "\e918";
+}
