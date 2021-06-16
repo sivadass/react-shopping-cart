@@ -1,0 +1,32 @@
+.form-group {
+  margin-bottom: 16px;
+  .invalid-feedback {
+    color: $red;
+    font-size: 14px;
+    margin-top: 8px;
+  }
+}
+
+.form-control {
+  display: block;
+  border-radius: 4px;
+  height: 48px;
+  padding: 0 16px;
+  width: 100%;
+  border: 1px solid $gray-eighty;
+  &:active,
+  &:focus {
+    border-color: $primary-green;
+  }
+  &.is-invalid {
+    border-color: $red;
+  }
+}
+
+.field-group {
+  display: flex;
+  justify-content: space-between;
+  .form-group {
+    flex-basis: 48%;
+  }
+}
